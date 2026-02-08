@@ -7,48 +7,52 @@
     <meta name="google-site-verification" content="google9ab75d1d0df868ea">
 
     <style>
-        :root { --rojo: #d90429; --negro: #1a1a1a; --gris: #f8f9fa; }
-        * { box-sizing: border-box; }
+        :root { --rojo: #d90429; --negro: #1a1a1a; --gris: #f8f9fa; --oro: #c2a01e; }
+        * { box-sizing: border-box; transition: all 0.3s ease; }
         body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; padding: 0; background: #fff; color: var(--negro); }
         
-        /* Banner superior */
+        /* Estilos generales */
         .top-banner { background: var(--negro); color: #fff; text-align: center; padding: 10px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; border-bottom: 2px solid var(--rojo); }
-        
-        header { padding: 50px 20px; text-align: center; border-bottom: 1px solid #eee; background: #fff; position: sticky; top: 0; z-index: 1000; }
+        header { padding: 50px 20px; text-align: center; border-bottom: 1px solid #eee; background: #fff; position: sticky; top: 0; z-index: 100; }
         header h1 { margin: 0; font-size: 3.5rem; font-weight: 900; letter-spacing: -2px; text-transform: uppercase; }
 
         .container { max-width: 1200px; margin: auto; padding: 50px 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
 
-        /* Tarjetas de Producto */
-        .card { border: 1px solid #e1e1e1; background: #fff; transition: 0.3s; display: flex; flex-direction: column; border-radius: 8px; overflow: hidden; }
-        .card:hover { border-color: var(--negro); box-shadow: 0 15px 40px rgba(0,0,0,0.1); transform: translateY(-5px); }
+        /* Tarjetas */
+        .card { border: 1px solid #e1e1e1; background: #fff; display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; }
+        .card:hover { border-color: var(--negro); box-shadow: 0 20px 40px rgba(0,0,0,0.1); transform: translateY(-10px); }
+        .img-wrap { height: 400px; overflow: hidden; background: #f9f9f9; display: flex; align-items: center; justify-content: center; }
+        .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
         
-        .img-wrap { height: 400px; overflow: hidden; background: #f0f0f0; border-bottom: 1px solid #eee; display: flex; align-items: center; justify-content: center; }
-        .img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .card:hover .img-wrap img { transform: scale(1.05); }
-
         .info { padding: 30px; text-align: center; flex-grow: 1; }
         .price { font-size: 24px; font-weight: 900; margin-bottom: 20px; color: var(--rojo); }
+        .old-price { text-decoration: line-through; color: #bbb; font-size: 16px; margin-right: 10px; display: none; }
 
-        /* Selectores de Talla (37-53) */
-        select { width: 100%; padding: 15px; border: 2px solid #eee; margin-bottom: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; }
-        select:focus { border-color: var(--negro); outline: none; }
+        select { width: 100%; padding: 15px; border: 2px solid #eee; margin-bottom: 15px; font-weight: bold; border-radius: 8px; outline: none; }
+        .btn { width: 100%; padding: 20px; background: var(--negro); color: #fff; border: none; font-size: 13px; font-weight: 900; text-transform: uppercase; cursor: pointer; border-radius: 8px; letter-spacing: 1px; }
+        .btn:hover { background: var(--rojo); }
 
-        .btn { width: 100%; padding: 20px; background: var(--negro); color: #fff; border: none; font-size: 14px; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.3s; border-radius: 6px; }
-        .btn:hover { background: var(--rojo); letter-spacing: 1px; }
+        /* MODAL CURRADÍSIMO */
+        .modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.8); backdrop-filter: blur(8px); align-items: center; justify-content: center;
+        }
+        .modal-content {
+            background: #fff; padding: 50px; border-radius: 20px; max-width: 500px; width: 90%; text-align: center;
+            position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2);
+        }
+        .modal-content h2 { font-size: 28px; font-weight: 900; margin-bottom: 10px; text-transform: uppercase; }
+        .modal-content p { color: #666; line-height: 1.6; margin-bottom: 30px; }
+        .contact-box { background: var(--gris); padding: 20px; border-radius: 12px; border: 1px solid #ddd; margin-bottom: 30px; font-family: monospace; font-size: 18px; font-weight: bold; color: var(--rojo); }
+        .close-modal { position: absolute; top: 20px; right: 20px; font-size: 24px; cursor: pointer; color: #888; }
 
-        /* Cupón Brian */
-        .coupon-area { margin: 80px 0; padding: 50px; background: var(--gris); border: 3px dashed #000; text-align: center; border-radius: 12px; }
-        .coupon-input { padding: 18px; width: 100%; max-width: 400px; border: 2px solid #000; font-size: 18px; text-align: center; font-weight: bold; margin-bottom: 15px; }
-
-        /* Memes Section */
+        /* Cupon y Memes */
+        .coupon-area { margin: 80px 0; padding: 50px; background: var(--gris); border: 2px solid #000; text-align: center; border-radius: 15px; }
         .meme-area { background: var(--negro); color: #fff; padding: 100px 20px; text-align: center; }
-        .btn-meme { padding: 20px 40px; font-weight: 900; background: #fff; color: #000; border: none; cursor: pointer; border-radius: 50px; text-transform: uppercase; }
-        #meme-img { max-width: 100%; max-height: 600px; margin-top: 40px; display: none; border: 8px solid #fff; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+        #meme-img { max-width: 100%; max-height: 500px; margin-top: 30px; display: none; border: 5px solid #fff; }
 
-        footer { padding: 100px 20px; border-top: 1px solid #eee; text-align: center; background: #fff; }
-        .email-link { font-size: 30px; font-weight: 900; color: var(--rojo); text-decoration: none; border-bottom: 5px solid var(--rojo); }
+        footer { padding: 80px 20px; text-align: center; background: #fff; border-top: 1px solid #eee; }
     </style>
 </head>
 <body>
@@ -57,29 +61,28 @@
 
     <header>
         <h1>HECHOPAGORDOS</h1>
-        <p style="color:#888; letter-spacing:4px; font-size:11px; text-transform:uppercase;">Premium Streetwear Archive</p>
+        <p style="color:#888; letter-spacing:3px; font-size:12px;">OFFICIAL PREMIUM STORE</p>
     </header>
 
     <div class="container">
         <div class="grid">
-            
             <div class="card">
                 <div class="img-wrap"><img src="Nike-Hachis.jpg" alt="Nike Hachis"></div>
                 <div class="info">
                     <h3>Nike Hachís "Limited"</h3>
-                    <p class="price">110,00 €</p>
-                    <select id="size-hachis"></select>
-                    <button class="btn" onclick="enviarPedido('Nike Hachis Limited', 'size-hachis')">Solicitar Pedido</button>
+                    <p class="price"><span class="old-price">110,00€</span><span class="curr-p" data-base="110">110,00 €</span></p>
+                    <select class="size-sel" id="s-hachis"></select>
+                    <button class="btn" onclick="abrirModal('Nike Hachis Limited', 's-hachis')">Solicitar Pedido</button>
                 </div>
             </div>
 
             <div class="card">
-                <div class="img-wrap"><img src="Air_Force_one_negras.jpg" alt="Air Force One"></div>
+                <div class="img-wrap"><img src="Air_Force_one_negras.jpg" alt="AF1"></div>
                 <div class="info">
                     <h3>Nike Air Force 1 "Black"</h3>
-                    <p class="price">110,00 €</p>
-                    <select id="size-af1"></select>
-                    <button class="btn" onclick="enviarPedido('Nike Air Force 1 Black', 'size-af1')">Solicitar Pedido</button>
+                    <p class="price"><span class="old-price">110,00€</span><span class="curr-p" data-base="110">110,00 €</span></p>
+                    <select class="size-sel" id="s-af1"></select>
+                    <button class="btn" onclick="abrirModal('Nike Air Force 1 Black', 's-af1')">Solicitar Pedido</button>
                 </div>
             </div>
 
@@ -87,9 +90,9 @@
                 <div class="img-wrap"><img src="Botines_Futbol_Elegante.jpg" alt="Botines"></div>
                 <div class="info">
                     <h3>Botines Fútbol Elegante</h3>
-                    <p class="price">85,00 €</p>
-                    <select id="size-botines"></select>
-                    <button class="btn" onclick="enviarPedido('Botines Fútbol Elegante', 'size-botines')">Solicitar Pedido</button>
+                    <p class="price"><span class="old-price">85,00€</span><span class="curr-p" data-base="85">85,00 €</span></p>
+                    <select class="size-sel" id="s-botines"></select>
+                    <button class="btn" onclick="abrirModal('Botines Fútbol Elegante', 's-botines')">Solicitar Pedido</button>
                 </div>
             </div>
 
@@ -97,9 +100,9 @@
                 <div class="img-wrap"><img src="Jordan-5-G1.jpg" alt="Jordan 5"></div>
                 <div class="info">
                     <h3>Jordan 5 "Limited G1"</h3>
-                    <p class="price">210,00 €</p>
-                    <select id="size-jordan5"></select>
-                    <button class="btn" onclick="enviarPedido('Jordan 5 Limited G1', 'size-jordan5')">Solicitar Pedido</button>
+                    <p class="price"><span class="old-price">210,00€</span><span class="curr-p" data-base="210">210,00 €</span></p>
+                    <select class="size-sel" id="s-j5"></select>
+                    <button class="btn" onclick="abrirModal('Jordan 5 Limited G1', 's-j5')">Solicitar Pedido</button>
                 </div>
             </div>
 
@@ -107,19 +110,19 @@
                 <div class="img-wrap"><img src="Jordan-Regueton.jpg" alt="Jordan Regueton"></div>
                 <div class="info">
                     <h3>Jordan Retro "Reguetón"</h3>
-                    <p class="price">190,00 €</p>
-                    <select id="size-regueton"></select>
-                    <button class="btn" onclick="enviarPedido('Jordan Retro Reguetón', 'size-regueton')">Solicitar Pedido</button>
+                    <p class="price"><span class="old-price">190,00€</span><span class="curr-p" data-base="190">190,00 €</span></p>
+                    <select class="size-sel" id="s-reg"></select>
+                    <button class="btn" onclick="abrirModal('Jordan Retro Reguetón', 's-reg')">Solicitar Pedido</button>
                 </div>
             </div>
 
             <div class="card">
-                <div class="img-wrap"><img src="Thompson-Contender-(EdicionPeppaPig).jpg" alt="Thompson Peppa"></div>
+                <div class="img-wrap"><img src="Thompson-Contender-(EdicionPeppaPig).jpg" alt="Thompson"></div>
                 <div class="info">
-                    <h3>Thompson Contender (Peppa Pig)</h3>
-                    <p class="price">75,00 €</p>
-                    <div style="height: 64px;"></div> 
-                    <button class="btn" onclick="enviarPedido('Thompson Contender Edición Peppa Pig', null)">Solicitar Pedido</button>
+                    <h3>Thompson Peppa Pig Edición</h3>
+                    <p class="price"><span class="old-price">75,00€</span><span class="curr-p" data-base="75">75,00 €</span></p>
+                    <div style="height: 64px;"></div>
+                    <button class="btn" onclick="abrirModal('Thompson Peppa Pig', null)">Solicitar Pedido</button>
                 </div>
             </div>
 
@@ -127,100 +130,96 @@
                 <div class="img-wrap"><img src="Tele-New-Generation.jpg" alt="Tele"></div>
                 <div class="info">
                     <h3>Tele New Generation 100"</h3>
-                    <p class="price">3.500,00 €</p>
+                    <p class="price"><span class="old-price">3.500,00€</span><span class="curr-p" data-base="3500">3.500,00 €</span></p>
                     <div style="height: 64px;"></div>
-                    <button class="btn" onclick="enviarPedido('Tele New Generation 100 Pulgadas', null)">Solicitar Envío</button>
+                    <button class="btn" onclick="abrirModal('Tele New Generation 100', null)">Solicitar Envío</button>
                 </div>
             </div>
-
         </div>
 
         <div class="coupon-area">
             <h2>🎫 ¿CONOCES A BRIAN?</h2>
-            <p>Introduce tu código exclusivo de cliente VIP.</p>
+            <input type="text" id="cup-in" style="padding:15px; width:320px; border:2px solid #000; text-align:center; font-weight:bold; margin-bottom:15px;" placeholder="CÓDIGO VIP">
             <br>
-            <input type="text" id="cup-in" class="coupon-input" placeholder="CÓDIGO">
-            <br>
-            <button onclick="valida()" class="btn" style="max-width:300px;">VALIDAR CÓDIGO</button>
-            <p id="cup-msg" style="margin-top: 25px; font-weight: bold; font-size: 1.3rem;"></p>
+            <button onclick="validaCupon()" class="btn" style="max-width:250px;">APLICAR 60% DTO</button>
+            <p id="cup-msg" style="margin-top:20px; font-weight:bold;"></p>
+        </div>
+    </div>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="cerrarModal()">&times;</span>
+            <div id="modal-icon" style="font-size: 50px; margin-bottom: 20px;">📦</div>
+            <h2 id="m-prod">PRODUCTO</h2>
+            <p id="m-talla">Talla seleccionada</p>
+            <p>Para finalizar la compra, contacta con nosotros vía email. Aceptamos Bizum y envíos nacionales.</p>
+            <div class="contact-box">notengopapa602@gmail.com</div>
+            <button class="btn" id="finalBtn">ENVIAR CORREO AHORA</button>
         </div>
     </div>
 
     <div class="meme-area">
         <h2>CENTRO DE ENTRETENIMIENTO</h2>
-        <p>Si el meme no carga, Brian está ocupado contando billetes. Reintenta.</p>
-        <br>
-        <button onclick="getMeme()" class="btn-meme">¡GENERAR MEME! 🚀</button>
-        <br>
-        <img id="meme-img" src="" alt="Meme">
+        <button onclick="getMeme()" class="btn" style="max-width:250px; background:#fff; color:#000;">¡GENERAR MEME! 🚀</button>
+        <br><img id="meme-img" src="">
     </div>
 
     <footer>
-        <h2>CANAL DE VENTA PROFESIONAL</h2>
-        <p>Escríbenos directamente para confirmar tu pedido y realizar el Bizum:</p>
-        <br>
-        <a href="mailto:notengopapa602@gmail.com" class="email-link">notengopapa602@gmail.com</a>
-        <p style="margin-top: 50px; opacity: 0.5; font-size: 11px;">HECHOPAGORDOS ARCHIVE © 2026 | NO WHATSAPP | PROFESSIONAL EMAIL ONLY</p>
+        <p style="opacity: 0.5; font-size: 11px;">HECHOPAGORDOS © 2026 | SIN WHATSAPP | PROFESSIONAL ARCHIVE</p>
     </footer>
 
     <script>
-        // Cargar tallas del 37 al 53
-        const selectors = ['size-hachis', 'size-af1', 'size-botines', 'size-jordan5', 'size-regueton'];
-        selectors.forEach(id => {
-            const select = document.getElementById(id);
-            for (let i = 37; i <= 53; i++) {
-                let opt = document.createElement('option');
-                opt.value = i;
-                opt.innerHTML = 'Talla ' + i;
-                select.appendChild(opt);
+        // Tallas 37-53
+        document.querySelectorAll('.size-sel').forEach(s => {
+            for(let i=37; i<=53; i++){
+                let o = document.createElement('option');
+                o.value = i; o.innerHTML = "Talla " + i;
+                s.appendChild(o);
             }
         });
 
-        // ENVÍO DE CORREO GUAPO Y PROFESIONAL
-        function enviarPedido(producto, idSelect) {
-            const email = "notengopapa602@gmail.com";
-            const talla = idSelect ? document.getElementById(idSelect).value : "Única / No aplica";
-            const asunto = encodeURIComponent("SOLICITUD DE PEDIDO - " + producto.toUpperCase());
-            const cuerpo = encodeURIComponent(
-                "ESTIMADO EQUIPO DE HECHOPAGORDOS,\n\n" +
-                "Deseo realizar un pedido formal del siguiente artículo del archivo:\n\n" +
-                "ITEM: " + producto + "\n" +
-                "TALLA SOLICITADA: " + talla + "\n\n" +
-                "Quedo a la espera de sus instrucciones para realizar el pago por BIZUM y facilitar mis datos de envío.\n\n" +
-                "Atentamente,"
-            );
+        // Modal
+        let prodTemp = "", tallaTemp = "";
+        function abrirModal(p, idS) {
+            prodTemp = p;
+            tallaTemp = idS ? "Talla " + document.getElementById(idS).value : "Talla Única";
+            document.getElementById('m-prod').innerText = prodTemp;
+            document.getElementById('m-talla').innerText = tallaTemp;
+            document.getElementById('contactModal').style.display = 'flex';
             
-            window.location.href = "mailto:" + email + "?subject=" + asunto + "&body=" + cuerpo;
+            document.getElementById('finalBtn').onclick = function() {
+                const precio = document.querySelector(`[alt*='${p.split(' ')[0]}']`)?.closest('.card').querySelector('.curr-p').innerText;
+                const body = encodeURIComponent(`Hola Brian,\n\nQuiero el siguiente artículo:\nItem: ${prodTemp}\n${tallaTemp}\nPrecio: ${precio}\n\nEspero instrucciones para el Bizum.\n\nSaludos.`);
+                window.location.href = `mailto:notengopapa602@gmail.com?subject=PEDIDO: ${prodTemp.toUpperCase()}&body=${body}`;
+            };
         }
-        
-        // CUPÓN REVISADO
-        function valida() {
+        function cerrarModal() { document.getElementById('contactModal').style.display = 'none'; }
+
+        // Cupon 60%
+        function validaCupon() {
             const v = document.getElementById('cup-in').value.trim();
-            const m = document.getElementById('cup-msg');
-            if(v === 'ConozcoaBrianNosoyGordo') { 
-                m.innerHTML = "✅ ACCESO VIP: Brian confirma que te conoce. Descuento aplicado en el carrito."; 
-                m.style.color = "green"; 
-            } else { 
-                m.innerHTML = "❌ CÓDIGO INVÁLIDO O CADUCADO."; 
-                m.style.color = "red"; 
+            if(v === 'ConozcoaBrianNosoyGordo') {
+                document.getElementById('cup-msg').innerHTML = "✅ ¡BRIAN TE HA BENDECIDO! 60% DE DESCUENTO.";
+                document.getElementById('cup-msg').style.color = "green";
+                document.querySelectorAll('.curr-p').forEach((p, i) => {
+                    const base = parseFloat(p.getAttribute('data-base'));
+                    p.innerHTML = (base * 0.4).toFixed(2) + " €";
+                    p.style.color = "#2b9348";
+                    document.querySelectorAll('.old-price')[i].style.display = "inline-block";
+                });
+            } else {
+                document.getElementById('cup-msg').innerHTML = "❌ CÓDIGO INVÁLIDO.";
+                document.getElementById('cup-msg').style.color = "red";
             }
         }
 
-        // MEMES REFORZADO
         async function getMeme() {
             const img = document.getElementById('meme-img');
-            img.style.display = 'none'; // Reset por si tarda
             try {
-                // Probamos con un subreddit de memes en español muy activo
                 const r = await fetch('https://meme-api.com/gimme/SpanishMemes');
                 const d = await r.json();
-                if(d.url) {
-                    img.src = d.url;
-                    img.style.display = 'inline-block';
-                }
-            } catch(e) { 
-                alert("¡Hostia! El servidor de memes está saturado. Inténtalo de nuevo en 2 segundos."); 
-            }
+                img.src = d.url; img.style.display = 'inline-block';
+            } catch(e) { alert("Brian está ocupado, dale otra vez."); }
         }
     </script>
 </body>
