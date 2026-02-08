@@ -5,23 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HechoPaGordos - Oficial</title>
     <style>
-        /* ESTILO GLOBAL NIKE/HECHO PA GORDOS */
+        /* ESTILO GLOBAL COMPLETO */
         body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; background-color: #ffffff; color: #111; overflow-x: hidden; }
         
+        /* Navegación y Menú */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: white; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #f1f1f1; }
         .logo { font-weight: 900; font-size: 22px; letter-spacing: -1.5px; text-transform: uppercase; }
         .menu-links { font-size: 14px; font-weight: bold; }
         .menu-links span { margin-left: 15px; cursor: pointer; text-transform: uppercase; }
 
+        /* Banner Principal (Hero) */
         .hero { text-align: center; padding: 80px 20px; background-color: #f5f5f5; margin-bottom: 40px; }
         .hero h1 { font-size: 50px; font-weight: 900; font-style: italic; text-transform: uppercase; margin: 0; letter-spacing: -3px; line-height: 0.8; }
         .hero p { font-size: 18px; margin: 20px 0; color: #444; font-weight: 500; }
-        
+        .btn-main { background: #111; color: #fff; padding: 15px 35px; text-decoration: none; border-radius: 40px; font-weight: bold; display: inline-block; transition: 0.3s; }
+
+        /* Grid de Productos */
         .seccion-titulo { padding: 0 30px; font-size: 26px; font-weight: bold; margin-bottom: 25px; text-transform: uppercase; }
         .grid-productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding: 0 30px 60px 30px; }
-        
-        /* Fotos */
         .producto-card { background: #fff; text-decoration: none; color: inherit; }
+        
+        /* Fotos y Galerías */
         .galeria-doble { display: flex; gap: 2px; background: #f6f6f6; border-radius: 4px; overflow: hidden; }
         .galeria-doble img { width: 50%; aspect-ratio: 1/1; object-fit: cover; }
         .foto-unica { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; background: #f6f6f6; }
@@ -34,21 +38,23 @@
         .btn-comprar { display: block; text-align: center; border: 1.5px solid #111; padding: 12px; border-radius: 30px; font-weight: bold; cursor: pointer; transition: 0.3s; }
         .btn-comprar:hover { background: #111; color: #fff; }
 
-        /* MODAL PROFESIONAL */
+        /* VENTANA MODAL PROFESIONAL */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; padding: 20px; }
-        .modal-content { background: white; padding: 30px; border-radius: 20px; width: 100%; max-width: 400px; text-align: center; position: relative; animation: slideUp 0.3s ease-out; }
-        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        
+        .modal-content { background: white; padding: 30px; border-radius: 20px; width: 100%; max-width: 400px; text-align: center; position: relative; }
         .close { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #999; }
-        .tallas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 25px 0; }
-        .talla-item { border: 1px solid #ddd; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
-        .talla-item:hover { border-color: #111; }
-        .talla-item.active { background: #111; color: #fff; border-color: #111; }
+        
+        .tallas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0; }
+        .talla-item { border: 1px solid #ddd; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .talla-item.active { background: #111; color: #fff; }
 
-        .contacto-profesional { display: none; margin-top: 25px; padding: 20px; background: #f9f9f9; border-radius: 12px; border: 1px solid #eee; }
-        .email-display { font-size: 18px; font-weight: 900; color: #111; margin: 10px 0; word-break: break-all; }
+        /* Cupones */
+        .cupon-box { margin: 20px 0; padding: 15px; background: #f0f9ff; border-radius: 12px; border: 1px dashed #007bff; }
+        .input-cupon { width: 80%; padding: 10px; border: 1px solid #ddd; border-radius: 20px; text-align: center; margin-bottom: 10px; }
+        .btn-cupon { background: #111; color: #fff; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-size: 12px; }
 
-        footer { text-align: center; padding: 40px; background: #111; color: #fff; font-size: 13px; margin-top: 50px; }
+        .contacto-final { display: none; margin-top: 25px; padding: 20px; background: #f9f9f9; border-radius: 12px; }
+        
+        footer { text-align: center; padding: 40px; background: #111; color: #fff; font-size: 13px; }
         @media (max-width: 600px) { .hero h1 { font-size: 38px; } .grid-productos { grid-template-columns: 1fr; } }
     </style>
 </head>
@@ -65,9 +71,10 @@
     <section class="hero">
         <h1>GRANDE POR<br>NATURALEZA</h1>
         <p>Estilo sin límites para los que no se conforman.</p>
+        <a href="#tienda" class="btn-main">Ver Colección</a>
     </section>
 
-    <div class="seccion-titulo">Novedades Destacadas</div>
+    <div class="seccion-titulo" id="tienda">Novedades Destacadas</div>
 
     <div class="grid-productos">
         <div class="producto-card">
@@ -77,9 +84,9 @@
             </div>
             <div class="info">
                 <div class="categoria">Calzado - Doble Vista</div>
-                <div class="nombre">Air Force One "Black Edition"</div>
+                <div class="nombre">Air Force One "Black"</div>
                 <div class="precio">110,00 €</div>
-                <div class="btn-comprar" onclick="abrirTallas('Air Force One Black')">Comprar ahora</div>
+                <div class="btn-comprar" onclick="abrirCompra('Air Force One Black', 110)">Comprar ahora</div>
             </div>
         </div>
 
@@ -89,7 +96,7 @@
                 <div class="categoria">Jordan Retro</div>
                 <div class="nombre">Jordan 5 G1 Especial</div>
                 <div class="precio">189,99 €</div>
-                <div class="btn-comprar" onclick="abrirTallas('Jordan 5 G1')">Comprar ahora</div>
+                <div class="btn-comprar" onclick="abrirCompra('Jordan 5 G1', 189.99)">Comprar ahora</div>
             </div>
         </div>
 
@@ -99,7 +106,7 @@
                 <div class="categoria">Limited Edition</div>
                 <div class="nombre">Jordan "Regueton" Style</div>
                 <div class="precio">210,00 €</div>
-                <div class="btn-comprar" onclick="abrirTallas('Jordan Regueton')">Comprar ahora</div>
+                <div class="btn-comprar" onclick="abrirCompra('Jordan Regueton', 210)">Comprar ahora</div>
             </div>
         </div>
 
@@ -109,7 +116,7 @@
                 <div class="categoria">Fútbol</div>
                 <div class="nombre">Botines Futbol Elegante</div>
                 <div class="precio">84,95 €</div>
-                <div class="btn-comprar" onclick="abrirTallas('Botines Futbol')">Comprar ahora</div>
+                <div class="btn-comprar" onclick="abrirCompra('Botines Futbol', 84.95)">Comprar ahora</div>
             </div>
         </div>
     </div>
@@ -117,65 +124,76 @@
     <div id="modalCompra" class="modal">
         <div class="modal-content">
             <span class="close" onclick="cerrarModal()">&times;</span>
-            <h2 id="prodNombre" style="text-transform:uppercase; letter-spacing:-1px;">Nombre Producto</h2>
-            <p id="instruccion">Selecciona tu talla europea:</p>
+            <h2 id="modalNombre">Producto</h2>
+            <p id="modalPrecio" style="font-size: 22px; font-weight: 900; color: #d90429;"></p>
             
-            <div id="selectorTallas" class="tallas-grid">
-                <div class="talla-item" onclick="selectTalla(this)">38</div>
-                <div class="talla-item" onclick="selectTalla(this)">39</div>
-                <div class="talla-item" onclick="selectTalla(this)">40</div>
-                <div class="talla-item" onclick="selectTalla(this)">41</div>
-                <div class="talla-item" onclick="selectTalla(this)">42</div>
-                <div class="talla-item" onclick="selectTalla(this)">43</div>
-                <div class="talla-item" onclick="selectTalla(this)">44</div>
-                <div class="talla-item" onclick="selectTalla(this)">45</div>
+            <div id="pasoTallas">
+                <p>Selecciona tu talla:</p>
+                <div class="tallas-grid">
+                    <div class="talla-item" onclick="seleccionarTalla(this)">38</div>
+                    <div class="talla-item" onclick="seleccionarTalla(this)">40</div>
+                    <div class="talla-item" onclick="seleccionarTalla(this)">42</div>
+                    <div class="talla-item" onclick="seleccionarTalla(this)">44</div>
+                </div>
+
+                <div class="cupon-box">
+                    <p style="margin:0 0 10px 0; font-size:14px; font-weight:bold;">¿Tienes un cupón?</p>
+                    <input type="text" id="inputCupon" class="input-cupon" placeholder="Código aquí...">
+                    <button class="btn-cupon" onclick="validarCupon()">Aplicar Cupón</button>
+                    <p id="msgCupon" style="color:green; font-weight:bold; display:none; margin-top:10px;">¡CUPÓN 60% ACTIVADO!</p>
+                </div>
+
+                <button id="btnConfirmar" class="btn-comprar" style="width:100%; display:none;" onclick="mostrarContacto()">Confirmar Selección</button>
             </div>
 
-            <button id="btnConfirmar" class="btn-comprar" style="width:100%; display:none;" onclick="irAContacto()">Confirmar Talla</button>
-
-            <div id="seccionContacto" class="contacto-profesional">
-                <p style="margin-top:0;">¡Perfecto! Para completar el pedido contacta por correo:</p>
-                <div class="email-display">notengopapa602@gmail.com</div>
-                <p style="font-size:12px; color:#666;">Indica el modelo y la talla al escribir.</p>
-                <a href="mailto:notengopapa602@gmail.com" class="btn-comprar" style="background:#111; color:#fff; margin-top:10px;">Enviar Correo Ahora</a>
+            <div id="seccionContacto" class="contacto-final">
+                <p>Para finalizar, envía un correo con el modelo y la talla:</p>
+                <div style="font-weight:900; font-size:18px; margin-bottom:15px;">notengopapa602@gmail.com</div>
+                <a href="mailto:notengopapa602@gmail.com" class="btn-comprar" style="background:#111; color:#fff;">Enviar Correo Ahora</a>
             </div>
         </div>
     </div>
 
     <script>
-        function abrirTallas(nombre) {
-            document.getElementById('prodNombre').innerText = nombre;
+        let precioOriginal = 0;
+
+        function abrirCompra(nombre, precio) {
+            precioOriginal = precio;
+            document.getElementById('modalNombre').innerText = nombre;
+            document.getElementById('modalPrecio').innerText = precio.toFixed(2) + " €";
             document.getElementById('modalCompra').style.display = "flex";
+            document.getElementById('pasoTallas').style.display = "block";
             document.getElementById('seccionContacto').style.display = "none";
-            document.getElementById('selectorTallas').style.display = "grid";
-            document.getElementById('instruccion').style.display = "block";
+            document.getElementById('msgCupon').style.display = "none";
+            document.getElementById('inputCupon').value = "";
             document.getElementById('btnConfirmar').style.display = "none";
-            let items = document.querySelectorAll('.talla-item');
-            items.forEach(i => i.classList.remove('active'));
         }
 
-        function cerrarModal() {
-            document.getElementById('modalCompra').style.display = "none";
+        function validarCupon() {
+            const code = document.getElementById('inputCupon').value;
+            if (code === "ConozcoaBrianNosoyGordo") {
+                const nuevoPrecio = precioOriginal * 0.4; // Descuento del 60%
+                document.getElementById('modalPrecio').innerText = nuevoPrecio.toFixed(2) + " €";
+                document.getElementById('msgCupon').style.display = "block";
+            } else {
+                alert("Cupón no válido");
+            }
         }
 
-        function selectTalla(el) {
-            let items = document.querySelectorAll('.talla-item');
-            items.forEach(i => i.classList.remove('active'));
+        function seleccionarTalla(el) {
+            document.querySelectorAll('.talla-item').forEach(i => i.classList.remove('active'));
             el.classList.add('active');
             document.getElementById('btnConfirmar').style.display = "block";
         }
 
-        function irAContacto() {
-            document.getElementById('selectorTallas').style.display = "none";
-            document.getElementById('instruccion').style.display = "none";
-            document.getElementById('btnConfirmar').style.display = "none";
+        function mostrarContacto() {
+            document.getElementById('pasoTallas').style.display = "none";
             document.getElementById('seccionContacto').style.display = "block";
         }
+
+        function cerrarModal() { document.getElementById('modalCompra').style.display = "none"; }
     </script>
 
-    <footer>
-        <p>HECHO PA GORDOS OFICIAL © 2026</p>
-    </footer>
+    <footer><p>HECHO PA GORDOS OFICIAL © 2026</p></footer>
 </body>
 </html>
-
