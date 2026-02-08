@@ -12,12 +12,21 @@
         body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; padding: 0; background: #fff; color: var(--negro); }
         
         .top-banner { background: var(--negro); color: #fff; text-align: center; padding: 10px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; border-bottom: 2px solid var(--rojo); }
-        header { padding: 50px 20px; text-align: center; border-bottom: 1px solid #eee; background: #fff; position: sticky; top: 0; z-index: 100; }
+        header { padding: 40px 20px; text-align: center; background: #fff; border-bottom: 1px solid #eee; }
         header h1 { margin: 0; font-size: 3.5rem; font-weight: 900; letter-spacing: -2px; text-transform: uppercase; }
+
+        /* SECCIÓN CÓMO COMPRAR */
+        .steps-container { background: var(--gris); padding: 40px 20px; border-bottom: 1px solid #eee; }
+        .steps-grid { max-width: 1100px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; }
+        .step { padding: 20px; }
+        .step-icon { font-size: 40px; margin-bottom: 15px; display: block; }
+        .step-title { font-weight: 900; text-transform: uppercase; font-size: 13px; margin-bottom: 5px; }
+        .step-desc { font-size: 12px; color: #666; }
 
         .container { max-width: 1200px; margin: auto; padding: 50px 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
 
+        /* Tarjetas */
         .card { border: 1px solid #e1e1e1; background: #fff; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
         .card:hover { border-color: var(--negro); box-shadow: 0 20px 40px rgba(0,0,0,0.1); transform: translateY(-5px); }
         .img-wrap { height: 400px; overflow: hidden; background: #f9f9f9; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #eee; }
@@ -31,24 +40,15 @@
         .btn { width: 100%; padding: 20px; background: var(--negro); color: #fff; border: none; font-size: 13px; font-weight: 900; text-transform: uppercase; cursor: pointer; border-radius: 8px; }
         .btn:hover { background: var(--rojo); letter-spacing: 1px; }
 
-        /* MODAL DE CONTACTO CURRADO */
-        .modal {
-            display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.85); backdrop-filter: blur(10px); align-items: center; justify-content: center;
-        }
-        .modal-content {
-            background: #fff; padding: 40px; border-radius: 20px; max-width: 500px; width: 90%; text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5); border: 1px solid #eee;
-        }
+        /* Modal */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(10px); align-items: center; justify-content: center; }
+        .modal-content { background: #fff; padding: 40px; border-radius: 20px; max-width: 500px; width: 90%; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
         .contact-box { background: #f4f4f4; padding: 15px; border-radius: 10px; margin: 20px 0; font-family: monospace; font-size: 18px; font-weight: bold; color: var(--rojo); border: 1px solid #ddd; }
 
-        /* Cupon y Memes */
         .coupon-area { margin: 80px 0; padding: 50px; background: var(--gris); border: 2px solid #000; text-align: center; border-radius: 15px; }
         .meme-area { background: var(--negro); color: #fff; padding: 100px 20px; text-align: center; }
-        .meme-area p { color: #888; font-style: italic; margin-bottom: 20px; }
         #meme-img { max-width: 100%; max-height: 500px; margin-top: 30px; display: none; border: 8px solid #fff; border-radius: 4px; }
-
-        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #eee; }
+        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #eee; opacity: 0.5; font-size: 11px; }
     </style>
 </head>
 <body>
@@ -59,6 +59,31 @@
         <h1>HECHOPAGORDOS</h1>
         <p style="color:#888; letter-spacing:3px; font-size:12px;">OFFICIAL PREMIUM STORE</p>
     </header>
+
+    <section class="steps-container">
+        <div class="steps-grid">
+            <div class="step">
+                <span class="step-icon">👟</span>
+                <p class="step-title">1. Eliges producto</p>
+                <p class="step-desc">Selecciona tu pieza y tu talla del catálogo.</p>
+            </div>
+            <div class="step">
+                <span class="step-icon">📧</span>
+                <p class="step-title">2. Contactas por Email</p>
+                <p class="step-desc">Pulsa solicitar y se abrirá el canal oficial.</p>
+            </div>
+            <div class="step">
+                <span class="step-icon">💸</span>
+                <p class="step-title">3. Pagas por Bizum</p>
+                <p class="step-desc">Método rápido y seguro directo con Brian.</p>
+            </div>
+            <div class="step">
+                <span class="step-icon">📦</span>
+                <p class="step-title">4. Recibes en 2-5 días laborales</p>
+                <p class="step-desc">Envío certificado con número de seguimiento.</p>
+            </div>
+        </div>
+    </section>
 
     <div class="container">
         <div class="grid">
@@ -135,7 +160,7 @@
 
         <div class="coupon-area">
             <h2>🎫 ¿CONOCES A BRIAN?</h2>
-            <input type="text" id="cup-in" style="padding:15px; width:320px; border:2px solid #000; text-align:center; font-weight:bold; margin-bottom:15px;" placeholder="INTRODUCE EL CÓDIGO VIP">
+            <input type="text" id="cup-in" style="padding:15px; width:320px; border:2px solid #000; text-align:center; font-weight:bold; margin-bottom:15px;" placeholder="CÓDIGO VIP">
             <br>
             <button onclick="validaCupon()" class="btn" style="max-width:250px;">APLICAR 60% DTO</button>
             <p id="cup-msg" style="margin-top:20px; font-weight:bold;"></p>
@@ -144,12 +169,12 @@
 
     <div id="contactModal" class="modal">
         <div class="modal-content">
-            <h2 id="m-prod" style="font-weight:900; text-transform:uppercase;">PRODUCTO</h2>
+            <h2 id="m-prod" style="font-weight:900;">PRODUCTO</h2>
             <p id="m-talla" style="font-weight:bold; color:var(--rojo);"></p>
-            <p>Para finalizar la compra y gestionar el envío, contacta con Brian directamente:</p>
+            <p>Para gestionar el pago y envío certificado (2-5 días), contacta aquí:</p>
             <div class="contact-box">notengopapa602@gmail.com</div>
-            <button class="btn" id="finalBtn">CONTACTAR POR CORREO</button>
-            <button class="btn" onclick="cerrarModal()" style="background:#eee; color:#000; margin-top:10px;">CERRAR</button>
+            <button class="btn" id="finalBtn">ABRIR CORREO AHORA</button>
+            <button class="btn" onclick="cerrarModal()" style="background:#eee; color:#000; margin-top:10px;">VOLVER</button>
         </div>
     </div>
 
@@ -161,7 +186,7 @@
     </div>
 
     <footer>
-        <p style="opacity: 0.5; font-size: 11px;">HECHOPAGORDOS ARCHIVE © 2026 | PROFESSIONAL EMAIL ONLY</p>
+        HECHOPAGORDOS ARCHIVE © 2026 | ALL RIGHTS RESERVED
     </footer>
 
     <script>
@@ -174,7 +199,7 @@
             }
         });
 
-        // Modal de contacto
+        // Modal
         function abrirModal(p, idS) {
             const talla = idS ? "Talla " + document.getElementById(idS).value : "Talla Única";
             document.getElementById('m-prod').innerText = p;
@@ -183,8 +208,8 @@
             
             document.getElementById('finalBtn').onclick = function() {
                 const precio = document.querySelector(`[alt*='${p.substring(0,4)}']`)?.closest('.card').querySelector('.curr-p').innerText;
-                const body = encodeURIComponent(`Hola Brian,\n\nSolicito el pedido de:\nItem: ${p}\n${talla}\nPrecio mostrado: ${precio}\n\nEspero instrucciones para el pago.\n\nSaludos.`);
-                window.location.href = `mailto:notengopapa602@gmail.com?subject=PEDIDO: ${p.toUpperCase()}&body=${body}`;
+                const body = encodeURIComponent(`Hola Brian,\n\nSolicito el pedido de:\nItem: ${p}\n${talla}\nPrecio: ${precio}\n\nQuedo a la espera para el Bizum.\n\nSaludos.`);
+                window.location.href = `mailto:notengopapa602@gmail.com?subject=SOLICITUD: ${p.toUpperCase()}&body=${body}`;
             };
         }
         function cerrarModal() { document.getElementById('contactModal').style.display = 'none'; }
@@ -192,7 +217,7 @@
         // Cupon 60%
         function validaCupon() {
             if(document.getElementById('cup-in').value.trim() === 'ConozcoaBrianNosoyGordo') {
-                document.getElementById('cup-msg').innerHTML = "✅ BRIAN CONFIRMADO. PRECIOS ACTUALIZADOS.";
+                document.getElementById('cup-msg').innerHTML = "✅ CUPÓN APLICADO: 60% DE DESCUENTO ACTIVO.";
                 document.getElementById('cup-msg').style.color = "green";
                 document.querySelectorAll('.curr-p').forEach((p, i) => {
                     const base = parseFloat(p.getAttribute('data-base'));
@@ -206,14 +231,13 @@
             }
         }
 
-        // Generar memes
         async function getMeme() {
             const img = document.getElementById('meme-img');
             try {
                 const r = await fetch('https://meme-api.com/gimme/SpanishMemes');
                 const d = await r.json();
                 img.src = d.url; img.style.display = 'inline-block';
-            } catch(e) { alert("Brian sigue contando billetes. Dale otra vez."); }
+            } catch(e) { alert("Brian sigue contando billetes. Reintenta."); }
         }
     </script>
 </body>
