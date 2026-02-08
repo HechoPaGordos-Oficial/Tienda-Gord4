@@ -41,19 +41,22 @@
         .btn { width: 100%; padding: 20px; background: var(--negro); color: #fff; border: none; font-size: 14px; font-weight: 900; text-transform: uppercase; cursor: pointer; border-radius: 10px; }
         .btn:hover { background: var(--rojo); }
 
-        /* MODAL */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(15px); align-items: center; justify-content: center; }
         .modal-content { background: #fff; padding: 50px; border-radius: 24px; max-width: 500px; width: 90%; text-align: center; color: #000; }
         .contact-box { background: #f0f0f0; padding: 20px; border-radius: 12px; margin: 25px 0; font-family: monospace; font-size: 18px; font-weight: bold; color: var(--rojo); border: 1px solid #ddd; }
 
         .coupon-area { margin: 80px 0; padding: 60px; background: var(--gris); border: 3px dashed #000; text-align: center; border-radius: 20px; }
+        
+        /* RESEÑAS CON FOTO */
         .reviews { background: #fff; padding: 80px 20px; text-align: center; border-top: 1px solid #eee; }
-        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1100px; margin: 50px auto; }
-        .review-item { padding: 20px; border-radius: 15px; background: var(--gris); font-style: italic; color: #333; font-size: 14px; line-height: 1.4; border-left: 5px solid var(--negro); }
+        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 50px auto; }
+        .review-item { padding: 20px; border-radius: 15px; background: var(--gris); text-align: left; display: flex; gap: 15px; align-items: flex-start; box-shadow: 0 5px 15px rgba(0,0,0,0.05); color: #333; }
+        .review-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--negro); flex-shrink: 0; }
+        .review-text { font-size: 13px; font-style: italic; line-height: 1.4; }
+        .review-author { display: block; font-weight: bold; font-style: normal; margin-top: 5px; color: var(--rojo); font-size: 11px; text-transform: uppercase; }
 
         .meme-area { background: var(--negro); color: #fff; padding: 100px 20px; text-align: center; }
         #meme-img { max-width: 100%; max-height: 500px; margin-top: 40px; display: none; border: 10px solid #fff; border-radius: 5px; }
-
         footer { padding: 60px 20px; text-align: center; background: #fff; border-top: 1px solid #eee; }
     </style>
 </head>
@@ -159,38 +162,8 @@
 
     <section class="reviews">
         <h2>RESEÑAS DE LA PAGINA</h2>
-        <div class="review-grid">
-            <div class="review-item">"Las zapas me llegaron flama. Brian me regaló un clip de Peppa Pig. 10/10." - <b>El Primo</b></div>
-            <div class="review-item">"La tele de 100 es tan grande que ahora vivo dentro de la caja. El mejor Bizum." - <b>Gordo de Valencia</b></div>
-            <div class="review-item">"Pedí las Jordan y automáticamente me creció la barba. Gracias Brian." - <b>Anónimo</b></div>
-            <div class="review-item">"Mi mujer me dejó, pero tengo las AF1 Negras. Brian es mi nuevo padre." - <b>Paco Billetes</b></div>
-            <div class="review-item">"El envío tardó 3 días, pero valió la pena solo por ver el remitente." - <b>Inversor</b></div>
-            <div class="review-item">"Compré la Thompson para mi gato. Ahora es el jefe del barrio." - <b>Señora de Cuenca</b></div>
-            <div class="review-item">"Brian me dijo que no me preocupara y ahora soy feliz. Amén." - <b>Fiel Seguidor</b></div>
-            <div class="review-item">"Puse el código y el precio bajó tanto que Brian me debe dinero a mí." - <b>Ahorrador</b></div>
-            <div class="review-item">"Las Jordan 5 brillan más que mi futuro. Impresionante." - <b>Estudiante</b></div>
-            <div class="review-item">"Si no compras aquí es porque no conoces a Brian. Un grande." - <b>Tiktoker</b></div>
-            <div class="review-item">"Me llegó el paquete envuelto en billetes de 5€. No pregunté." - <b>Curioso</b></div>
-            <div class="review-item">"La Thompson de Peppa dispara burbujas de lujo. Mi hijo está loco." - <b>Padre del año</b></div>
-            <div class="review-item">"Llevo las AF1 y la policía me pide autógrafos. Poder puro." - <b>Malote</b></div>
-            <div class="review-item">"Brian me mandó un saludo en el paquete. No me lavo las manos." - <b>Fan nº 1</b></div>
-            <div class="review-item">"La tele 100'' gasta tanta luz que se apaga el barrio, pero se ve de locos." - <b>Cinéfilo</b></div>
-            <div class="review-item">"El Bizum a Brian es la mejor inversión de 2026. Olvida el oro." - <b>Broker</b></div>
-            <div class="review-item">"Hice el pedido un domingo y Brian me contestó desde el yate. Ídolo." - <b>Envidioso</b></div>
-            <div class="review-item">"Las Jordan Reguetón vienen con autotune de serie. ¡Brrr!" - <b>Anuel Falso</b></div>
-            <div class="review-item">"No soy gordo pero compro aquí porque Brian es mi hermano." - <b>El Flaco</b></div>
-            <div class="review-item">"Me equivoqué de talla y Brian me mandó otro par gratis. (Es broma)." - <b>Optimista</b></div>
-            <div class="review-item">"Le pedí descuento y me mandó un meme. Al final compré dos." - <b>Convencido</b></div>
-            <div class="review-item">"La caja del paquete olía a éxito y a kebab. 100% real." - <b>Hambriento</b></div>
-            <div class="review-item">"Mi abuela usa las Hachís para ir a por el pan. Ahora es influencer." - <b>Nieto orgulloso</b></div>
-            <div class="review-item">"Desde que tengo la Tele 100, veo los poros de Peppa Pig." - <b>Obsesivo</b></div>
-            <div class="review-item">"Brian es el único que me entiende en este mundo cruel." - <b>Poeta</b></div>
-            <div class="review-item">"Bizum enviado, paquete recibido, felicidad alcanzada. Punto." - <b>Filósofo</b></div>
-            <div class="review-item">"Las Jordan 5 G1 me dan doble salto en la vida real." - <b>Gamer</b></div>
-            <div class="review-item">"Pensé que era estafa y ahora soy el socio mayoritario de mi calle." - <b>Ex-escéptico</b></div>
-            <div class="review-item">"Brian para presidente de la ONU ya mismo." - <b>Diplomático</b></div>
-            <div class="review-item">"No tengo papa pero tengo a Brian. HechoPaGordos manda." - <b>El Elegido</b></div>
-        </div>
+        <div class="review-grid" id="review-container">
+            </div>
     </section>
 
     <div class="meme-area">
@@ -216,12 +189,62 @@
     </footer>
 
     <script>
+        // Tallas 37-53
         document.querySelectorAll('.size-sel').forEach(s => {
             for(let i=37; i<=53; i++){
                 let o = document.createElement('option');
                 o.value = i; o.innerHTML = "Talla " + i;
                 s.appendChild(o);
             }
+        });
+
+        // Generador de reseñas con fotos random
+        const reseñas = [
+            {t: "Las zapas me llegaron flama. Brian me regaló un clip de Peppa Pig.", a: "El Primo"},
+            {t: "La tele de 100 es tan grande que ahora vivo dentro de la caja.", a: "Gordo de Valencia"},
+            {t: "Pedí las Jordan y automáticamente me creció la barba. Gracias Brian.", a: "Anónimo"},
+            {t: "Mi mujer me dejó, pero tengo las AF1 Negras. Brian es mi nuevo padre.", a: "Paco Billetes"},
+            {t: "El envío tardó 3 días, pero valió la pena solo por ver el remitente.", a: "Inversor"},
+            {t: "Compré la Thompson para mi gato. Ahora es el jefe del barrio.", a: "Señora de Cuenca"},
+            {t: "Brian me dijo que no me preocupara y ahora soy feliz. Amén.", a: "Fiel Seguidor"},
+            {t: "Puse el código y el precio bajó tanto que Brian me debe dinero.", a: "Ahorrador"},
+            {t: "Las Jordan 5 brillan más que mi futuro. Impresionante.", a: "Estudiante"},
+            {t: "Si no compras aquí es porque no conoces a Brian. Un grande.", a: "Tiktoker"},
+            {t: "Me llegó el paquete envuelto en billetes de 5€. No pregunté.", a: "Curioso"},
+            {t: "La Thompson de Peppa dispara burbujas de lujo. Mi hijo está loco.", a: "Padre del año"},
+            {t: "Llevo las AF1 y la policía me pide autógrafos. Poder puro.", a: "Malote"},
+            {t: "Brian me mandó un saludo en el paquete. No me lavo las manos.", a: "Fan nº 1"},
+            {t: "La tele 100'' gasta tanta luz que se apaga el barrio, pero se ve de locos.", a: "Cinéfilo"},
+            {t: "El Bizum a Brian es la mejor inversión de 2026. Olvida el oro.", a: "Broker"},
+            {t: "Hice el pedido un domingo y Brian me contestó desde el yate. Ídolo.", a: "Envidioso"},
+            {t: "Las Jordan Reguetón vienen con autotune de serie. ¡Brrr!", a: "Anuel Falso"},
+            {t: "No soy gordo pero compro aquí porque Brian es mi hermano.", a: "El Flaco"},
+            {t: "Me mandó un paquete y dentro venía un kebab de regalo. 5 estrellas.", a: "Hambriento"},
+            {t: "Le pedí descuento y me mandó un meme de un gato. Compré dos pares.", a: "Convencido"},
+            {t: "La caja olía a éxito y a colonia de 2 euros. Autenticidad pura.", a: "Experto"},
+            {t: "Mi abuela usa las Hachís para ir a misa. Ahora es la jefa del coro.", a: "Nieto orgulloso"},
+            {t: "Desde que tengo la Tele 100, veo los poros de Peppa Pig en 4K.", a: "Obsesivo"},
+            {t: "Brian es el único que me entiende en este mundo cruel y flaco.", a: "Poeta"},
+            {t: "Bizum enviado, paquete recibido, felicidad alcanzada. Corto y cierro.", a: "Filósofo"},
+            {t: "Las Jordan 5 G1 me dan doble salto en la vida real. Comprobado.", a: "Gamer"},
+            {t: "Pensé que era estafa y ahora soy el rey de mi bloque.", a: "Ex-escéptico"},
+            {t: "Brian para presidente de la comunidad y del mundo entero.", a: "Diplomático"},
+            {t: "No tengo papa pero tengo a Brian. HechoPaGordos manda.", a: "El Elegido"}
+        ];
+
+        const container = document.getElementById('review-container');
+        reseñas.forEach((r, i) => {
+            const div = document.createElement('div');
+            div.className = 'review-item';
+            // Usamos picsum con un seed diferente para cada foto para que sean random
+            div.innerHTML = `
+                <img src="https://picsum.photos/seed/${i+40}/100/100" class="review-img" alt="user">
+                <div class="review-text">
+                    "${r.t}"
+                    <span class="review-author">- ${r.a}</span>
+                </div>
+            `;
+            container.appendChild(div);
         });
 
         function toggleBilletes() { document.getElementById('mainBody').classList.toggle('billetes-mode'); }
