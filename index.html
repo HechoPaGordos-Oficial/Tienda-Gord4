@@ -13,10 +13,10 @@
         body.billetes-mode { background: #000; color: #fff; }
         body.billetes-mode .card, body.billetes-mode header, body.billetes-mode .steps-container { background: #0a0a0a; border-color: var(--oro); color: #fff; }
         body.billetes-mode .price { color: var(--oro); }
-        body.billetes-mode .top-banner { border-bottom: 2px solid var(--oro); }
 
         body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; padding: 0; background: #fff; color: var(--negro); overflow-x: hidden; }
         .top-banner { background: var(--negro); color: #fff; text-align: center; padding: 10px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; border-bottom: 2px solid var(--rojo); position: sticky; top: 0; z-index: 1001; }
+        
         header { padding: 60px 20px; text-align: center; background: #fff; border-bottom: 1px solid #eee; position: relative; }
         header h1 { margin: 0; font-size: 4rem; font-weight: 900; letter-spacing: -3px; text-transform: uppercase; }
         .mode-toggle { position: absolute; top: 20px; right: 20px; padding: 10px 15px; background: var(--negro); color: #fff; border: 2px solid var(--oro); border-radius: 50px; cursor: pointer; font-size: 10px; font-weight: bold; z-index: 100; }
@@ -24,292 +24,271 @@
         .steps-container { background: var(--gris); padding: 40px 20px; border-bottom: 1px solid #eee; }
         .steps-grid { max-width: 1100px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; }
         .step-icon { font-size: 30px; margin-bottom: 10px; display: block; }
-        .step-title { font-weight: 900; text-transform: uppercase; font-size: 13px; margin-bottom: 5px; }
+        .step-title { font-weight: 900; text-transform: uppercase; font-size: 13px; }
 
         .container { max-width: 1200px; margin: auto; padding: 50px 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
 
         .card { border: 1px solid #e1e1e1; background: #fff; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
         .card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
-        .img-wrap { height: 400px; overflow: hidden; background: #f9f9f9; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #eee; }
+        .img-wrap { height: 400px; overflow: hidden; background: #f9f9f9; display: flex; align-items: center; justify-content: center; }
         .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
         .info { padding: 30px; text-align: center; flex-grow: 1; }
         .price { font-size: 26px; font-weight: 900; color: var(--rojo); margin-bottom: 20px; }
-        .old-price { text-decoration: line-through; color: #bbb; font-size: 16px; margin-right: 10px; display: none; }
-
+        
         select { width: 100%; padding: 15px; border: 2px solid #eee; margin-bottom: 15px; font-weight: bold; border-radius: 10px; }
         .btn { width: 100%; padding: 20px; background: var(--negro); color: #fff; border: none; font-size: 14px; font-weight: 900; text-transform: uppercase; cursor: pointer; border-radius: 10px; }
         .btn:hover { background: var(--rojo); }
 
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(15px); align-items: center; justify-content: center; }
-        .modal-content { background: #fff; padding: 50px; border-radius: 24px; max-width: 500px; width: 90%; text-align: center; color: #000; }
-        .contact-box { background: #f0f0f0; padding: 20px; border-radius: 12px; margin: 25px 0; font-family: monospace; font-size: 18px; font-weight: bold; color: var(--rojo); border: 1px solid #ddd; }
-
-        .coupon-area { margin: 80px 0; padding: 60px; background: var(--gris); border: 3px dashed #000; text-align: center; border-radius: 20px; }
-        
-        /* RESEÑAS CON FOTO */
+        /* REVIEWS SECCIÓN */
         .reviews { background: #fff; padding: 80px 20px; text-align: center; border-top: 1px solid #eee; }
-        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 50px auto; }
-        .review-item { padding: 20px; border-radius: 15px; background: var(--gris); text-align: left; display: flex; gap: 15px; align-items: flex-start; box-shadow: 0 5px 15px rgba(0,0,0,0.05); color: #333; }
-        .review-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--negro); flex-shrink: 0; }
-        .review-text { font-size: 13px; font-style: italic; line-height: 1.4; }
-        .review-author { display: block; font-weight: bold; font-style: normal; margin-top: 5px; color: var(--rojo); font-size: 11px; text-transform: uppercase; }
+        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 40px auto; }
+        .review-item { padding: 20px; border-radius: 15px; background: var(--gris); text-align: left; display: flex; gap: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .review-img { width: 60px; height: 60px; border-radius: 50%; border: 2px solid #000; object-fit: cover; flex-shrink: 0; }
+        .stars { color: #ffbc00; font-size: 14px; display: block; margin-bottom: 5px; }
+        .review-text { font-size: 13px; color: #333; line-height: 1.4; }
+        .review-author { display: block; font-weight: bold; color: var(--rojo); font-size: 11px; margin-top: 5px; }
 
-        .meme-area { background: var(--negro); color: #fff; padding: 100px 20px; text-align: center; }
-        #meme-img { max-width: 100%; max-height: 500px; margin-top: 40px; display: none; border: 10px solid #fff; border-radius: 5px; }
-        footer { padding: 60px 20px; text-align: center; background: #fff; border-top: 1px solid #eee; }
+        /* MEMES */
+        .meme-area { background: var(--negro); color: #fff; padding: 80px 20px; text-align: center; border-top: 5px solid var(--rojo); }
+        #meme-img { max-width: 100%; max-height: 500px; margin-top: 30px; display: none; border: 5px solid #fff; }
+
+        /* MODAL */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(15px); align-items: center; justify-content: center; }
+        .modal-content { background: #fff; padding: 50px; border-radius: 24px; text-align: center; max-width: 500px; width: 90%; color: #000; }
+        .contact-box { background: #f0f0f0; padding: 20px; border-radius: 12px; margin: 25px 0; font-family: monospace; font-size: 18px; font-weight: bold; color: var(--rojo); }
+
+        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #eee; background: #fff; }
     </style>
 </head>
 <body id="mainBody">
 
-    <div class="top-banner">EXCLUSIVIDAD Y CALIDAD EN CADA PIEZA | ARCHIVO 2026</div>
+    <div class="top-banner">ARCHIVO OFICIAL HECHOPAGORDOS 2026 | SIN WHATSAPP | ENVÍOS CERTIFICADOS</div>
 
     <header>
-        <button class="mode-toggle" onclick="toggleBilletes()">MODO CONTANDO BILLETES 💸</button>
+        <button class="mode-toggle" onclick="toggleBilletes()">MODO BILLETES 💸</button>
         <h1>HECHOPAGORDOS</h1>
-        <p style="letter-spacing: 5px; font-size: 12px; color: #888;">PREMIUM STREETWEAR ARCHIVE</p>
+        <p style="letter-spacing: 5px;">PREMIUM STREETWEAR ARCHIVE</p>
     </header>
 
     <section class="steps-container">
         <div class="steps-grid">
-            <div class="step"><span class="step-icon">👟</span><p class="step-title">1. Eliges producto</p></div>
-            <div class="step"><span class="step-icon">📧</span><p class="step-title">2. Contactas por Email</p></div>
-            <div class="step"><span class="step-icon">💸</span><p class="step-title">3. Pagas por Bizum</p></div>
-            <div class="step"><span class="step-icon">📦</span><p class="step-title">4. Recibes en 2-5 días laborales</p></div>
+            <div class="step"><span class="step-icon">👟</span><p class="step-title">1. Eliges Zapas</p></div>
+            <div class="step"><span class="step-icon">📧</span><p class="step-title">2. Escribes Email</p></div>
+            <div class="step"><span class="step-icon">💸</span><p class="step-title">3. Pagas Bizum</p></div>
+            <div class="step"><span class="step-icon">📦</span><p class="step-title">4. Recibes Joya</p></div>
         </div>
     </section>
 
     <div class="container">
         <div class="grid">
             <div class="card">
-                <div class="img-wrap"><img src="Nike-Hachis.jpg" alt="Hachis"></div>
+                <div class="img-wrap"><img src="Nike-Hachis.jpg"></div>
                 <div class="info">
                     <h3>Nike Hachís "Limited"</h3>
-                    <p class="price"><span class="old-price">110€</span><span class="curr-p" data-base="110">110,00 €</span></p>
-                    <select class="size-sel" id="s-hachis"></select>
-                    <button class="btn" onclick="abrirModal('Nike Hachis Limited', 's-hachis')">Solicitar Pedido</button>
+                    <p class="price" data-base="110">110,00 €</p>
+                    <select class="size-sel" id="s1"></select>
+                    <button class="btn" onclick="abrirModal('Nike Hachis', 's1')">Solicitar Pedido</button>
                 </div>
             </div>
 
             <div class="card">
-                <div class="img-wrap"><img src="Air_Force_one_negras.jpg" alt="AF1"></div>
+                <div class="img-wrap"><img src="Air_Force_one_negras.jpg"></div>
                 <div class="info">
                     <h3>Nike Air Force 1 "Black"</h3>
-                    <p class="price"><span class="old-price">110€</span><span class="curr-p" data-base="110">110,00 €</span></p>
-                    <select class="size-sel" id="s-af1"></select>
-                    <button class="btn" onclick="abrirModal('Nike Air Force 1 Black', 's-af1')">Solicitar Pedido</button>
+                    <p class="price" data-base="110">110,00 €</p>
+                    <select class="size-sel" id="s2"></select>
+                    <button class="btn" onclick="abrirModal('AF1 Black', 's2')">Solicitar Pedido</button>
                 </div>
             </div>
 
-            <div class="card" id="secret-card" style="background: linear-gradient(135deg, #111, #222); color: #fff; align-items: center; justify-content: center; min-height: 500px; border: 2px solid #333;">
-                <div class="info" id="secret-info">
-                    <div id="secret-icon" style="font-size: 60px; margin-bottom: 20px; filter: blur(4px);">❓</div>
-                    <h3 id="secret-title" style="color: var(--oro);">ARCHIVO SECRETO</h3>
-                    <p id="secret-p">Contenido clasificado solo para miembros VIP.</p>
-                    <button class="btn" id="secret-btn" style="background: var(--oro);" onclick="desbloquearSecreto()">DESBLOQUEAR</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="img-wrap"><img src="Jordan-5-G1.jpg" alt="J5"></div>
+            <div class="card" id="secret-card" style="background: #111; color: #fff; justify-content: center; min-height: 500px; border: 2px solid #333;">
                 <div class="info">
-                    <h3>Jordan 5 "Limited G1"</h3>
-                    <p class="price"><span class="old-price">210€</span><span class="curr-p" data-base="210">210,00 €</span></p>
-                    <select class="size-sel" id="s-j5"></select>
-                    <button class="btn" onclick="abrirModal('Jordan 5 Limited G1', 's-j5')">Solicitar Pedido</button>
+                    <div id="secret-icon" style="font-size: 60px; filter: blur(2px);">❓</div>
+                    <h3>ARCHIVO SECRETO</h3>
+                    <p>Solo para VIPs.</p>
+                    <button class="btn" style="background: var(--oro);" onclick="desbloquearSecreto()">DESBLOQUEAR</button>
                 </div>
             </div>
 
             <div class="card">
-                <div class="img-wrap"><img src="Jordan-Regueton.jpg" alt="Reg"></div>
-                <div class="info">
-                    <h3>Jordan Retro "Reguetón"</h3>
-                    <p class="price"><span class="old-price">190€</span><span class="curr-p" data-base="190">190,00 €</span></p>
-                    <select class="size-sel" id="s-reg"></select>
-                    <button class="btn" onclick="abrirModal('Jordan Retro Reguetón', 's-reg')">Solicitar Pedido</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="img-wrap"><img src="Thompson-Contender-(EdicionPeppaPig).jpg" alt="Peppa"></div>
+                <div class="img-wrap"><img src="Thompson-Contender-(EdicionPeppaPig).jpg"></div>
                 <div class="info">
                     <h3>Thompson Peppa Pig Edition</h3>
-                    <p class="price"><span class="old-price">75€</span><span class="curr-p" data-base="75">75,00 €</span></p>
-                    <div style="height: 64px;"></div>
-                    <button class="btn" onclick="abrirModal('Thompson Peppa Pig', null)">Solicitar Pedido</button>
+                    <p class="price" data-base="2500">2.500,00 €</p>
+                    <button class="btn" onclick="abrirModal('Thompson Peppa', null)">Solicitar Pedido</button>
                 </div>
             </div>
 
             <div class="card">
-                <div class="img-wrap"><img src="Tele-New-Generation.jpg" alt="Tele"></div>
+                <div class="img-wrap"><img src="Jordan-5-G1.jpg"></div>
+                <div class="info">
+                    <h3>Jordan 5 "Limited G1"</h3>
+                    <p class="price" data-base="210">210,00 €</p>
+                    <select class="size-sel" id="s3"></select>
+                    <button class="btn" onclick="abrirModal('Jordan 5 G1', 's3')">Solicitar Pedido</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="img-wrap"><img src="Jordan-Regueton.jpg"></div>
+                <div class="info">
+                    <h3>Jordan Retro "Reguetón"</h3>
+                    <p class="price" data-base="190">190,00 €</p>
+                    <select class="size-sel" id="s4"></select>
+                    <button class="btn" onclick="abrirModal('Jordan Regueton', 's4')">Solicitar Pedido</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="img-wrap"><img src="Tele-New-Generation.jpg"></div>
                 <div class="info">
                     <h3>Tele New Generation 100"</h3>
-                    <p class="price"><span class="old-price">3.500€</span><span class="curr-p" data-base="3500">3.500,00 €</span></p>
-                    <div style="height: 64px;"></div>
-                    <button class="btn" onclick="abrirModal('Tele New Generation 100', null)">Solicitar Envío</button>
+                    <p class="price" data-base="3500">3.500,00 €</p>
+                    <button class="btn" onclick="abrirModal('Tele 100', null)">Solicitar Envío</button>
                 </div>
             </div>
         </div>
 
-        <div class="coupon-area">
-            <h2>🎫 ¿TIENES UN CÓDIGO?</h2>
-            <p>Si conoces a Brian, mete tu código VIP aquí abajo.</p>
-            <input type="text" id="cup-in" style="padding:15px; width:300px; border:2px solid #000; text-align:center; font-weight:bold; margin-bottom:15px;" placeholder="CÓDIGO">
-            <br><button onclick="validaCupon()" class="btn" style="max-width:250px;">APLICAR DESCUENTO</button>
-            <p id="cup-msg" style="margin-top:20px; font-weight:bold;"></p>
+        <div style="text-align:center; margin:80px 0; padding:60px; border:3px dashed #000; background: var(--gris);">
+            <h2>🎫 ¿CÓDIGO DE BRIAN?</h2>
+            <input type="text" id="cup-in" placeholder="ESCRIBE AQUÍ" style="padding:15px; width:250px; text-align:center; font-weight:bold;"><br><br>
+            <button class="btn" style="max-width:200px;" onclick="validaCupon()">VALIDAR</button>
+            <p id="cup-msg" style="margin-top:15px; font-weight:bold;"></p>
         </div>
     </div>
 
     <section class="reviews">
-        <h2>RESEÑAS DE LA PAGINA</h2>
-        <div class="review-grid" id="review-container">
-            </div>
+        <h2>RESEÑAS DE LOS GORDOS (30+)</h2>
+        <div class="review-grid" id="review-container"></div>
     </section>
 
     <div class="meme-area">
-        <h2>CENTRO DE ENTRETENIMIENTO</h2>
-        <p>Si no carga el meme, es porque Brian está ocupado contando billetes. Reintenta.</p>
-        <button onclick="getMeme()" class="btn" style="max-width:250px; background:#fff; color:#000;">¡GENERAR MEME! 🚀</button>
+        <h2>MEMES PARA EL RATO</h2>
+        <button class="btn" style="background:#fff; color:#000; max-width:250px;" onclick="getMeme()">GENERAR MEME 🚀</button>
         <br><img id="meme-img" src="">
     </div>
 
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <h2 id="m-prod"></h2>
-            <p id="m-talla" style="font-weight:bold; color:var(--rojo);"></p>
-            <p>Para gestionar el pago por Bizum y el envío certificado, contacta aquí:</p>
+            <p id="m-talla" style="color:var(--rojo); font-weight:bold;"></p>
+            <p>Escribe a Brian para el Bizum:</p>
             <div class="contact-box">notengopapa602@gmail.com</div>
-            <button class="btn" id="finalBtn">CONTACTAR POR CORREO</button>
+            <button class="btn" onclick="location.href='mailto:notengopapa602@gmail.com'">ENVIAR CORREO</button>
         </div>
     </div>
 
     <footer>
-        <p>HECHOPAGORDOS ARCHIVE © 2026 | SIN WHATSAPP | EMAIL ONLY</p>
-        <div class="counter">GORDOS QUE HAN VISITADO EL ARCHIVO: <span id="visitas">124.582</span></div>
+        <p>HECHOPAGORDOS ARCHIVE © 2026 | EMAIL ONLY</p>
+        <div style="font-weight:bold;">GORDOS VISITANDO LA WEB: <span id="visitas">254.102</span></div>
     </footer>
 
     <script>
-        // Tallas 37-53
+        // Rellenar Tallas 37-53
         document.querySelectorAll('.size-sel').forEach(s => {
-            for(let i=37; i<=53; i++){
+            for(let i=37; i<=53; i++) {
                 let o = document.createElement('option');
-                o.value = i; o.innerHTML = "Talla " + i;
+                o.value = i; o.innerText = "Talla " + i;
                 s.appendChild(o);
             }
         });
 
-        // Generador de reseñas con fotos random
-        const reseñas = [
-            {t: "Las zapas me llegaron flama. Brian me regaló un clip de Peppa Pig.", a: "El Primo"},
-            {t: "La tele de 100 es tan grande que ahora vivo dentro de la caja.", a: "Gordo de Valencia"},
-            {t: "Pedí las Jordan y automáticamente me creció la barba. Gracias Brian.", a: "Anónimo"},
-            {t: "Mi mujer me dejó, pero tengo las AF1 Negras. Brian es mi nuevo padre.", a: "Paco Billetes"},
-            {t: "El envío tardó 3 días, pero valió la pena solo por ver el remitente.", a: "Inversor"},
-            {t: "Compré la Thompson para mi gato. Ahora es el jefe del barrio.", a: "Señora de Cuenca"},
-            {t: "Brian me dijo que no me preocupara y ahora soy feliz. Amén.", a: "Fiel Seguidor"},
-            {t: "Puse el código y el precio bajó tanto que Brian me debe dinero.", a: "Ahorrador"},
-            {t: "Las Jordan 5 brillan más que mi futuro. Impresionante.", a: "Estudiante"},
-            {t: "Si no compras aquí es porque no conoces a Brian. Un grande.", a: "Tiktoker"},
-            {t: "Me llegó el paquete envuelto en billetes de 5€. No pregunté.", a: "Curioso"},
-            {t: "La Thompson de Peppa dispara burbujas de lujo. Mi hijo está loco.", a: "Padre del año"},
-            {t: "Llevo las AF1 y la policía me pide autógrafos. Poder puro.", a: "Malote"},
-            {t: "Brian me mandó un saludo en el paquete. No me lavo las manos.", a: "Fan nº 1"},
-            {t: "La tele 100'' gasta tanta luz que se apaga el barrio, pero se ve de locos.", a: "Cinéfilo"},
-            {t: "El Bizum a Brian es la mejor inversión de 2026. Olvida el oro.", a: "Broker"},
-            {t: "Hice el pedido un domingo y Brian me contestó desde el yate. Ídolo.", a: "Envidioso"},
-            {t: "Las Jordan Reguetón vienen con autotune de serie. ¡Brrr!", a: "Anuel Falso"},
-            {t: "No soy gordo pero compro aquí porque Brian es mi hermano.", a: "El Flaco"},
-            {t: "Me mandó un paquete y dentro venía un kebab de regalo. 5 estrellas.", a: "Hambriento"},
-            {t: "Le pedí descuento y me mandó un meme de un gato. Compré dos pares.", a: "Convencido"},
-            {t: "La caja olía a éxito y a colonia de 2 euros. Autenticidad pura.", a: "Experto"},
-            {t: "Mi abuela usa las Hachís para ir a misa. Ahora es la jefa del coro.", a: "Nieto orgulloso"},
-            {t: "Desde que tengo la Tele 100, veo los poros de Peppa Pig en 4K.", a: "Obsesivo"},
-            {t: "Brian es el único que me entiende en este mundo cruel y flaco.", a: "Poeta"},
-            {t: "Bizum enviado, paquete recibido, felicidad alcanzada. Corto y cierro.", a: "Filósofo"},
-            {t: "Las Jordan 5 G1 me dan doble salto en la vida real. Comprobado.", a: "Gamer"},
-            {t: "Pensé que era estafa y ahora soy el rey de mi bloque.", a: "Ex-escéptico"},
-            {t: "Brian para presidente de la comunidad y del mundo entero.", a: "Diplomático"},
-            {t: "No tengo papa pero tengo a Brian. HechoPaGordos manda.", a: "El Elegido"}
+        // 30 RESEÑAS CON FOTOS GRACIOSAS
+        const rawReviews = [
+            {s:5, t:"Zapas flama, Brian es mi padre.", a:"El Primo"},
+            {s:5, t:"La tele de 100 es mi nueva casa.", a:"Gordo Valencia"},
+            {s:5, t:"Me creció barba con las Jordan.", a:"Anónimo"},
+            {s:5, t:"La Thompson Peppa es arte.", a:"Coleccionista"},
+            {s:5, t:"Bizum enviado y paquete en casa.", a:"Fiel"},
+            {s:5, t:"Brian para presidente.", a:"Diplomático"},
+            {s:5, t:"Las AF1 negras huelen a poder.", a:"Malote"},
+            {s:5, t:"Inversión mejor que el Bitcoin.", a:"Broker"},
+            {s:5, t:"No soy gordo pero compro aquí.", a:"El Flaco"},
+            {s:5, t:"El clip de Peppa es el mejor regalo.", a:"Fan nº1"},
+            {s:5, t:"Me llegaron en 2 días. Brutal.", a:"Rápido"},
+            {s:5, t:"Hachís de Nike, calidad suprema.", a:"Experto"},
+            {s:5, t:"Brian me contestó al segundo.", a:"Agradecido"},
+            {s:5, t:"La mejor web de 2026.", a:"Vanguardia"},
+            {s:5, t:"Zapas que brillan más que mi ex.", a:"Soltero"},
+            {s:5, t:"Jordan Reguetón con autotune.", a:"Cantante"},
+            {s:5, t:"HechoPaGordos es mi religión.", a:"Creyente"},
+            {s:5, t:"Paquete envuelto con mimo.", a:"Detallista"},
+            {s:5, t:"El código de Brian funciona!", a:"Ahorrador"},
+            {s:5, t:"Doble salto con las Jordan 5.", a:"Gamer"},
+            // HATERS / CRÍTICAS GRACIOSAS
+            {s:1, t:"Brian no me invitó a su yate.", a:"Indignado"},
+            {s:2, t:"La Thompson no dispara fuego.", a:"Pirómano"},
+            {s:1, t:"Me mandó un meme de un pepino.", a:"Sin Humor"},
+            {s:1, t:"Huele a kebab el paquete.", a:"Hambriento"},
+            {s:2, t:"La tele no entra por mi puerta.", a:"Chapuzas"},
+            {s:1, t:"No aceptan chapas de CocaCola.", a:"Pobre"},
+            {s:1, t:"Brian es demasiado guapo.", a:"Enamorado"},
+            {s:2, t:"Las zapas corren solas. Ayuda.", a:"Asustado"},
+            {s:1, t:"Me puso el clip de Peppa azul.", a:"Tiquismiquis"},
+            {s:1, t:"Esperaba a Brian en persona.", a:"Exigente"}
         ];
 
         const container = document.getElementById('review-container');
-        reseñas.forEach((r, i) => {
+        rawReviews.forEach((r, i) => {
             const div = document.createElement('div');
             div.className = 'review-item';
-            // Usamos picsum con un seed diferente para cada foto para que sean random
+            const stars = "★".repeat(r.s) + "☆".repeat(5-r.s);
             div.innerHTML = `
-                <img src="https://picsum.photos/seed/${i+40}/100/100" class="review-img" alt="user">
-                <div class="review-text">
-                    "${r.t}"
+                <img src="https://loremflickr.com/100/100/funny,face,animal?lock=${i+500}" class="review-img">
+                <div>
+                    <span class="stars">${stars}</span>
+                    <div class="review-text">"${r.t}"</div>
                     <span class="review-author">- ${r.a}</span>
                 </div>
             `;
             container.appendChild(div);
         });
 
-        function toggleBilletes() { document.getElementById('mainBody').classList.toggle('billetes-mode'); }
+        // FUNCIONES
+        function toggleBilletes() { document.body.classList.toggle('billetes-mode'); }
 
-        setInterval(() => {
-            let v = document.getElementById('visitas');
-            v.innerText = parseInt(v.innerText.replace('.','')) + Math.floor(Math.random() * 3);
-        }, 3000);
-
-        function desbloquearSecreto() {
-            const card = document.getElementById('secret-card');
-            const icon = document.getElementById('secret-icon');
-            const title = document.getElementById('secret-title');
-            const p = document.getElementById('secret-p');
-            const btn = document.getElementById('secret-btn');
-            card.style.background = "var(--rojo)";
-            icon.style.filter = "none"; icon.innerText = "🚨";
-            title.innerText = "¡DESBLOQUEADO!"; title.style.color = "#fff";
-            p.innerHTML = "CONTACTANDO CON BRIAN...<br><b>notengopapa602@gmail.com</b>";
-            btn.innerText = "ENVIANDO CORREO...";
-            setTimeout(() => {
-                window.location.href = "mailto:notengopapa602@gmail.com?subject=ACCESO ARCHIVO SECRETO&body=Hola Brian, he desbloqueado el secreto.";
-            }, 1000);
-        }
-
-        function abrirModal(p, idS) {
-            const talla = idS ? "Talla " + document.getElementById(idS).value : "Talla Única";
+        function abrirModal(p, sId) {
             document.getElementById('m-prod').innerText = p.toUpperCase();
-            document.getElementById('m-talla').innerText = talla;
+            document.getElementById('m-talla').innerText = sId ? "Talla elegida: " + document.getElementById(sId).value : "Talla Única";
             document.getElementById('contactModal').style.display = 'flex';
-            document.getElementById('finalBtn').onclick = function() {
-                window.location.href = `mailto:notengopapa602@gmail.com?subject=PEDIDO: ${p.toUpperCase()}&body=Hola Brian, quiero ${p} en ${talla}.`;
-            };
-        }
-        
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('contactModal')) {
-                document.getElementById('contactModal').style.display = "none";
-            }
         }
 
         function validaCupon() {
-            if(document.getElementById('cup-in').value.trim() === 'ConozcoaBrianNosoyGordo') {
-                document.getElementById('cup-msg').innerHTML = "✅ CÓDIGO BRIAN ACEPTADO.";
-                document.getElementById('cup-msg').style.color = "green";
-                document.querySelectorAll('.curr-p').forEach((p, i) => {
-                    const base = parseFloat(p.getAttribute('data-base'));
-                    p.innerHTML = (base * 0.4).toFixed(2) + " €";
+            if(document.getElementById('cup-in').value === 'ConozcoaBrianNosoyGordo') {
+                document.getElementById('cup-msg').innerText = "✅ DESCUENTO BRIAN ACTIVADO (60% OFF)";
+                document.querySelectorAll('.price').forEach(p => {
+                    let base = parseFloat(p.getAttribute('data-base'));
+                    p.innerText = (base * 0.4).toFixed(2) + " €";
                     p.style.color = "#2b9348";
-                    document.querySelectorAll('.old-price')[i].style.display = "inline-block";
                 });
-            } else {
-                document.getElementById('cup-msg').innerHTML = "❌ CÓDIGO NO VÁLIDO.";
-                document.getElementById('cup-msg').style.color = "red";
-            }
+            } else { document.getElementById('cup-msg').innerText = "❌ Código falso."; }
+        }
+
+        function desbloquearSecreto() {
+            document.getElementById('secret-card').style.background = "var(--rojo)";
+            document.getElementById('secret-icon').innerText = "🚨";
+            setTimeout(() => { location.href="mailto:notengopapa602@gmail.com?subject=ARCHIVO SECRETO"; }, 1000);
         }
 
         async function getMeme() {
             const img = document.getElementById('meme-img');
             try {
-                const r = await fetch('https://meme-api.com/gimme/SpanishMemes');
-                const d = await r.json();
-                img.src = d.url; img.style.display = 'inline-block';
-            } catch(e) { alert("Brian sigue contando billetes."); }
+                const res = await fetch('https://meme-api.com/gimme/SpanishMemes');
+                const data = await res.json();
+                img.src = data.url; img.style.display = 'inline-block';
+            } catch(e) { alert("Brian contando billetes, intenta luego."); }
         }
+
+        // CONTADOR REAL
+        setInterval(() => {
+            let v = document.getElementById('visitas');
+            let num = parseInt(v.innerText.replace('.',''));
+            v.innerText = (num + Math.floor(Math.random()*5)).toLocaleString();
+        }, 1500);
+
+        window.onclick = (e) => { if(e.target.className === 'modal') e.target.style.display = 'none'; };
     </script>
 </body>
 </html>
+
