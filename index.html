@@ -3,43 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>HECHOPAGORDOS | Official Archive</title>
-    
     <meta name="google-site-verification" content="google9ab75d1d0df868ea">
 
     <style>
         :root { --rojo: #d90429; --negro: #1a1a1a; --gris: #f8f9fa; }
         * { box-sizing: border-box; }
         body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; padding: 0; background: #fff; color: var(--negro); }
+        
+        /* Banner superior */
         .top-banner { background: var(--negro); color: #fff; text-align: center; padding: 10px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; border-bottom: 2px solid var(--rojo); }
         
         header { padding: 50px 20px; text-align: center; border-bottom: 1px solid #eee; background: #fff; position: sticky; top: 0; z-index: 1000; }
-        header h1 { margin: 0; font-size: 3rem; font-weight: 900; letter-spacing: -2px; text-transform: uppercase; }
-        
+        header h1 { margin: 0; font-size: 3.5rem; font-weight: 900; letter-spacing: -2px; text-transform: uppercase; }
+
         .container { max-width: 1200px; margin: auto; padding: 50px 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+
+        /* Tarjetas de Producto */
+        .card { border: 1px solid #e1e1e1; background: #fff; transition: 0.3s; display: flex; flex-direction: column; border-radius: 8px; overflow: hidden; }
+        .card:hover { border-color: var(--negro); box-shadow: 0 15px 40px rgba(0,0,0,0.1); transform: translateY(-5px); }
         
-        .card { border: 1px solid #e1e1e1; background: #fff; transition: 0.3s; overflow: hidden; }
-        .card:hover { border-color: var(--negro); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        
-        .img-wrap { height: 380px; overflow: hidden; background: #f0f0f0; border-bottom: 1px solid #eee; display: flex; align-items: center; justify-content: center; }
-        .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-        
-        .info { padding: 30px; text-align: center; }
-        .price { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: var(--rojo); }
-        
-        select { width: 100%; padding: 12px; border: 1px solid #ccc; margin-bottom: 15px; font-family: inherit; }
-        
-        .btn { width: 100%; padding: 18px; background: var(--negro); color: #fff; border: none; font-weight: bold; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
-        .btn:hover { background: var(--rojo); }
-        
-        .coupon-area { margin: 60px 0; padding: 40px; background: var(--gris); border: 1px solid #000; text-align: center; }
-        .meme-area { background: var(--negro); color: #fff; padding: 80px 20px; text-align: center; }
-        #meme-img { max-width: 100%; max-height: 500px; margin-top: 30px; display: none; border: 5px solid #fff; }
-        
-        footer { padding: 80px 20px; border-top: 1px solid #eee; text-align: center; }
-        .email-link { font-size: 26px; font-weight: 900; color: var(--rojo); text-decoration: none; border-bottom: 3px solid var(--rojo); }
+        .img-wrap { height: 400px; overflow: hidden; background: #f0f0f0; border-bottom: 1px solid #eee; display: flex; align-items: center; justify-content: center; }
+        .img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .card:hover .img-wrap img { transform: scale(1.05); }
+
+        .info { padding: 30px; text-align: center; flex-grow: 1; }
+        .price { font-size: 24px; font-weight: 900; margin-bottom: 20px; color: var(--rojo); }
+
+        /* Selectores de Talla (37-53) */
+        select { width: 100%; padding: 15px; border: 2px solid #eee; margin-bottom: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+        select:focus { border-color: var(--negro); outline: none; }
+
+        .btn { width: 100%; padding: 20px; background: var(--negro); color: #fff; border: none; font-size: 14px; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.3s; border-radius: 6px; }
+        .btn:hover { background: var(--rojo); letter-spacing: 1px; }
+
+        /* Cupón Brian */
+        .coupon-area { margin: 80px 0; padding: 50px; background: var(--gris); border: 3px dashed #000; text-align: center; border-radius: 12px; }
+        .coupon-input { padding: 18px; width: 100%; max-width: 400px; border: 2px solid #000; font-size: 18px; text-align: center; font-weight: bold; margin-bottom: 15px; }
+
+        /* Memes Section */
+        .meme-area { background: var(--negro); color: #fff; padding: 100px 20px; text-align: center; }
+        .btn-meme { padding: 20px 40px; font-weight: 900; background: #fff; color: #000; border: none; cursor: pointer; border-radius: 50px; text-transform: uppercase; }
+        #meme-img { max-width: 100%; max-height: 600px; margin-top: 40px; display: none; border: 8px solid #fff; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+
+        footer { padding: 100px 20px; border-top: 1px solid #eee; text-align: center; background: #fff; }
+        .email-link { font-size: 30px; font-weight: 900; color: var(--rojo); text-decoration: none; border-bottom: 5px solid var(--rojo); }
     </style>
 </head>
 <body>
@@ -48,7 +57,7 @@
 
     <header>
         <h1>HECHOPAGORDOS</h1>
-        <p style="color:#888; letter-spacing:2px; font-size:13px;">PREMIUM STREETWEAR ARCHIVE</p>
+        <p style="color:#888; letter-spacing:4px; font-size:11px; text-transform:uppercase;">Premium Streetwear Archive</p>
     </header>
 
     <div class="container">
@@ -59,8 +68,8 @@
                 <div class="info">
                     <h3>Nike Hachís "Limited"</h3>
                     <p class="price">110,00 €</p>
-                    <select><option>Talla 40</option><option>Talla 42</option><option>Talla 44</option><option>Talla GORDO</option></select>
-                    <button class="btn" onclick="pedido('Nike Hachis')">Solicitar Pedido</button>
+                    <select id="size-hachis"></select>
+                    <button class="btn" onclick="enviarPedido('Nike Hachis Limited', 'size-hachis')">Solicitar Pedido</button>
                 </div>
             </div>
 
@@ -69,8 +78,8 @@
                 <div class="info">
                     <h3>Nike Air Force 1 "Black"</h3>
                     <p class="price">110,00 €</p>
-                    <select><option>Talla 41</option><option>Talla 43</option><option>Talla 45</option></select>
-                    <button class="btn" onclick="pedido('Air Force One')">Solicitar Pedido</button>
+                    <select id="size-af1"></select>
+                    <button class="btn" onclick="enviarPedido('Nike Air Force 1 Black', 'size-af1')">Solicitar Pedido</button>
                 </div>
             </div>
 
@@ -79,17 +88,18 @@
                 <div class="info">
                     <h3>Botines Fútbol Elegante</h3>
                     <p class="price">85,00 €</p>
-                    <select><option>Talla 40</option><option>Talla 42</option><option>Talla 44</option></select>
-                    <button class="btn" onclick="pedido('Botines Futbol')">Solicitar Pedido</button>
+                    <select id="size-botines"></select>
+                    <button class="btn" onclick="enviarPedido('Botines Fútbol Elegante', 'size-botines')">Solicitar Pedido</button>
                 </div>
             </div>
 
             <div class="card">
-                <div class="img-wrap"><img src="Thompson-Contender-(EdicionPeppaPig).jpg" alt="Thompson Peppa"></div>
+                <div class="img-wrap"><img src="Jordan-5-G1.jpg" alt="Jordan 5"></div>
                 <div class="info">
-                    <h3>Thompson Contender (Peppa Pig)</h3>
-                    <p class="price">75,00 €</p>
-                    <button class="btn" onclick="pedido('Thompson Peppa')">Solicitar Pedido</button>
+                    <h3>Jordan 5 "Limited G1"</h3>
+                    <p class="price">210,00 €</p>
+                    <select id="size-jordan5"></select>
+                    <button class="btn" onclick="enviarPedido('Jordan 5 Limited G1', 'size-jordan5')">Solicitar Pedido</button>
                 </div>
             </div>
 
@@ -98,8 +108,18 @@
                 <div class="info">
                     <h3>Jordan Retro "Reguetón"</h3>
                     <p class="price">190,00 €</p>
-                    <select><option>Talla 41</option><option>Talla 44</option></select>
-                    <button class="btn" onclick="pedido('Jordan Regueton')">Solicitar Pedido</button>
+                    <select id="size-regueton"></select>
+                    <button class="btn" onclick="enviarPedido('Jordan Retro Reguetón', 'size-regueton')">Solicitar Pedido</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="img-wrap"><img src="Thompson-Contender-(EdicionPeppaPig).jpg" alt="Thompson Peppa"></div>
+                <div class="info">
+                    <h3>Thompson Contender (Peppa Pig)</h3>
+                    <p class="price">75,00 €</p>
+                    <div style="height: 64px;"></div> 
+                    <button class="btn" onclick="enviarPedido('Thompson Contender Edición Peppa Pig', null)">Solicitar Pedido</button>
                 </div>
             </div>
 
@@ -108,53 +128,99 @@
                 <div class="info">
                     <h3>Tele New Generation 100"</h3>
                     <p class="price">3.500,00 €</p>
-                    <button class="btn" onclick="pedido('Tele')">Solicitar Envío</button>
+                    <div style="height: 64px;"></div>
+                    <button class="btn" onclick="enviarPedido('Tele New Generation 100 Pulgadas', null)">Solicitar Envío</button>
                 </div>
             </div>
 
         </div>
 
         <div class="coupon-area">
-            <h2>🎫 CUPÓN DE BRIAN</h2>
-            <input type="text" id="cup-in" style="padding:15px; width:250px; border:1px solid #000;" placeholder="CÓDIGO">
-            <button onclick="valida()" style="padding: 15px 30px; cursor:pointer; background:#000; color:#fff; font-weight:bold; border:none;">APLICAR</button>
-            <p id="cup-msg" style="margin-top: 20px; font-weight: bold;"></p>
+            <h2>🎫 ¿CONOCES A BRIAN?</h2>
+            <p>Introduce tu código exclusivo de cliente VIP.</p>
+            <br>
+            <input type="text" id="cup-in" class="coupon-input" placeholder="CÓDIGO">
+            <br>
+            <button onclick="valida()" class="btn" style="max-width:300px;">VALIDAR CÓDIGO</button>
+            <p id="cup-msg" style="margin-top: 25px; font-weight: bold; font-size: 1.3rem;"></p>
         </div>
     </div>
 
     <div class="meme-area">
         <h2>CENTRO DE ENTRETENIMIENTO</h2>
-        <button onclick="getMeme()" style="padding: 15px 30px; cursor:pointer; font-weight:bold; background:#fff; color:#000; border:none;">¡GENERAR MEME ESPAÑOL! 🚀</button>
+        <p>Si el meme no carga, Brian está ocupado contando billetes. Reintenta.</p>
+        <br>
+        <button onclick="getMeme()" class="btn-meme">¡GENERAR MEME! 🚀</button>
         <br>
         <img id="meme-img" src="" alt="Meme">
     </div>
 
     <footer>
-        <h2>CANAL DE VENTA OFICIAL</h2>
-        <p>Escríbenos para pedidos y pagos por Bizum:</p>
+        <h2>CANAL DE VENTA PROFESIONAL</h2>
+        <p>Escríbenos directamente para confirmar tu pedido y realizar el Bizum:</p>
         <br>
         <a href="mailto:notengopapa602@gmail.com" class="email-link">notengopapa602@gmail.com</a>
-        <p style="margin-top: 40px; opacity: 0.5; font-size: 11px;">HECHOPAGORDOS © 2026 | PROFESSIONAL EMAIL ONLY</p>
+        <p style="margin-top: 50px; opacity: 0.5; font-size: 11px;">HECHOPAGORDOS ARCHIVE © 2026 | NO WHATSAPP | PROFESSIONAL EMAIL ONLY</p>
     </footer>
 
     <script>
-        function pedido(p) { alert("Para pedir " + p + ", envía un email a notengopapa602@gmail.com indicando la talla y tu dirección."); }
+        // Cargar tallas del 37 al 53
+        const selectors = ['size-hachis', 'size-af1', 'size-botines', 'size-jordan5', 'size-regueton'];
+        selectors.forEach(id => {
+            const select = document.getElementById(id);
+            for (let i = 37; i <= 53; i++) {
+                let opt = document.createElement('option');
+                opt.value = i;
+                opt.innerHTML = 'Talla ' + i;
+                select.appendChild(opt);
+            }
+        });
+
+        // ENVÍO DE CORREO GUAPO Y PROFESIONAL
+        function enviarPedido(producto, idSelect) {
+            const email = "notengopapa602@gmail.com";
+            const talla = idSelect ? document.getElementById(idSelect).value : "Única / No aplica";
+            const asunto = encodeURIComponent("SOLICITUD DE PEDIDO - " + producto.toUpperCase());
+            const cuerpo = encodeURIComponent(
+                "ESTIMADO EQUIPO DE HECHOPAGORDOS,\n\n" +
+                "Deseo realizar un pedido formal del siguiente artículo del archivo:\n\n" +
+                "ITEM: " + producto + "\n" +
+                "TALLA SOLICITADA: " + talla + "\n\n" +
+                "Quedo a la espera de sus instrucciones para realizar el pago por BIZUM y facilitar mis datos de envío.\n\n" +
+                "Atentamente,"
+            );
+            
+            window.location.href = "mailto:" + email + "?subject=" + asunto + "&body=" + cuerpo;
+        }
         
+        // CUPÓN REVISADO
         function valida() {
-            const v = document.getElementById('cup-in').value.toLowerCase();
+            const v = document.getElementById('cup-in').value.trim();
             const m = document.getElementById('cup-msg');
-            if(v === 'brian') { m.innerHTML = "✅ CUPÓN APLICADO: 0.5% DESCUENTO."; m.style.color = "green"; }
-            else { m.innerHTML = "❌ CÓDIGO INVÁLIDO."; m.style.color = "red"; }
+            if(v === 'ConozcoaBrianNosoyGordo') { 
+                m.innerHTML = "✅ ACCESO VIP: Brian confirma que te conoce. Descuento aplicado en el carrito."; 
+                m.style.color = "green"; 
+            } else { 
+                m.innerHTML = "❌ CÓDIGO INVÁLIDO O CADUCADO."; 
+                m.style.color = "red"; 
+            }
         }
 
+        // MEMES REFORZADO
         async function getMeme() {
             const img = document.getElementById('meme-img');
+            img.style.display = 'none'; // Reset por si tarda
             try {
+                // Probamos con un subreddit de memes en español muy activo
                 const r = await fetch('https://meme-api.com/gimme/SpanishMemes');
                 const d = await r.json();
-                img.src = d.url;
-                img.style.display = 'inline-block';
-            } catch(e) { alert("Error al conectar con el servidor de memes."); }
+                if(d.url) {
+                    img.src = d.url;
+                    img.style.display = 'inline-block';
+                }
+            } catch(e) { 
+                alert("¡Hostia! El servidor de memes está saturado. Inténtalo de nuevo en 2 segundos."); 
+            }
         }
     </script>
 </body>
