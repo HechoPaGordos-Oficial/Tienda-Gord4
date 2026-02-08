@@ -7,11 +7,10 @@
     <meta name="google-site-verification" content="google9ab75d1d0df868ea">
 
     <style>
-        :root { --rojo: #d90429; --negro: #1a1a1a; --gris: #f8f9fa; --oro: #c2a01e; }
+        :root { --rojo: #d90429; --negro: #1a1a1a; --gris: #f8f9fa; }
         * { box-sizing: border-box; transition: all 0.3s ease; }
         body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; padding: 0; background: #fff; color: var(--negro); }
         
-        /* Estilos generales */
         .top-banner { background: var(--negro); color: #fff; text-align: center; padding: 10px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; border-bottom: 2px solid var(--rojo); }
         header { padding: 50px 20px; text-align: center; border-bottom: 1px solid #eee; background: #fff; position: sticky; top: 0; z-index: 100; }
         header h1 { margin: 0; font-size: 3.5rem; font-weight: 900; letter-spacing: -2px; text-transform: uppercase; }
@@ -19,10 +18,9 @@
         .container { max-width: 1200px; margin: auto; padding: 50px 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
 
-        /* Tarjetas */
-        .card { border: 1px solid #e1e1e1; background: #fff; display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; }
-        .card:hover { border-color: var(--negro); box-shadow: 0 20px 40px rgba(0,0,0,0.1); transform: translateY(-10px); }
-        .img-wrap { height: 400px; overflow: hidden; background: #f9f9f9; display: flex; align-items: center; justify-content: center; }
+        .card { border: 1px solid #e1e1e1; background: #fff; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+        .card:hover { border-color: var(--negro); box-shadow: 0 20px 40px rgba(0,0,0,0.1); transform: translateY(-5px); }
+        .img-wrap { height: 400px; overflow: hidden; background: #f9f9f9; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #eee; }
         .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
         
         .info { padding: 30px; text-align: center; flex-grow: 1; }
@@ -30,29 +28,27 @@
         .old-price { text-decoration: line-through; color: #bbb; font-size: 16px; margin-right: 10px; display: none; }
 
         select { width: 100%; padding: 15px; border: 2px solid #eee; margin-bottom: 15px; font-weight: bold; border-radius: 8px; outline: none; }
-        .btn { width: 100%; padding: 20px; background: var(--negro); color: #fff; border: none; font-size: 13px; font-weight: 900; text-transform: uppercase; cursor: pointer; border-radius: 8px; letter-spacing: 1px; }
-        .btn:hover { background: var(--rojo); }
+        .btn { width: 100%; padding: 20px; background: var(--negro); color: #fff; border: none; font-size: 13px; font-weight: 900; text-transform: uppercase; cursor: pointer; border-radius: 8px; }
+        .btn:hover { background: var(--rojo); letter-spacing: 1px; }
 
-        /* MODAL CURRADÍSIMO */
+        /* MODAL DE CONTACTO CURRADO */
         .modal {
             display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.8); backdrop-filter: blur(8px); align-items: center; justify-content: center;
+            background-color: rgba(0,0,0,0.85); backdrop-filter: blur(10px); align-items: center; justify-content: center;
         }
         .modal-content {
-            background: #fff; padding: 50px; border-radius: 20px; max-width: 500px; width: 90%; text-align: center;
-            position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2);
+            background: #fff; padding: 40px; border-radius: 20px; max-width: 500px; width: 90%; text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5); border: 1px solid #eee;
         }
-        .modal-content h2 { font-size: 28px; font-weight: 900; margin-bottom: 10px; text-transform: uppercase; }
-        .modal-content p { color: #666; line-height: 1.6; margin-bottom: 30px; }
-        .contact-box { background: var(--gris); padding: 20px; border-radius: 12px; border: 1px solid #ddd; margin-bottom: 30px; font-family: monospace; font-size: 18px; font-weight: bold; color: var(--rojo); }
-        .close-modal { position: absolute; top: 20px; right: 20px; font-size: 24px; cursor: pointer; color: #888; }
+        .contact-box { background: #f4f4f4; padding: 15px; border-radius: 10px; margin: 20px 0; font-family: monospace; font-size: 18px; font-weight: bold; color: var(--rojo); border: 1px solid #ddd; }
 
         /* Cupon y Memes */
         .coupon-area { margin: 80px 0; padding: 50px; background: var(--gris); border: 2px solid #000; text-align: center; border-radius: 15px; }
         .meme-area { background: var(--negro); color: #fff; padding: 100px 20px; text-align: center; }
-        #meme-img { max-width: 100%; max-height: 500px; margin-top: 30px; display: none; border: 5px solid #fff; }
+        .meme-area p { color: #888; font-style: italic; margin-bottom: 20px; }
+        #meme-img { max-width: 100%; max-height: 500px; margin-top: 30px; display: none; border: 8px solid #fff; border-radius: 4px; }
 
-        footer { padding: 80px 20px; text-align: center; background: #fff; border-top: 1px solid #eee; }
+        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #eee; }
     </style>
 </head>
 <body>
@@ -67,7 +63,7 @@
     <div class="container">
         <div class="grid">
             <div class="card">
-                <div class="img-wrap"><img src="Nike-Hachis.jpg" alt="Nike Hachis"></div>
+                <div class="img-wrap"><img src="Nike-Hachis.jpg" alt="Hachis"></div>
                 <div class="info">
                     <h3>Nike Hachís "Limited"</h3>
                     <p class="price"><span class="old-price">110,00€</span><span class="curr-p" data-base="110">110,00 €</span></p>
@@ -107,7 +103,7 @@
             </div>
 
             <div class="card">
-                <div class="img-wrap"><img src="Jordan-Regueton.jpg" alt="Jordan Regueton"></div>
+                <div class="img-wrap"><img src="Jordan-Regueton.jpg" alt="Jordan Reg"></div>
                 <div class="info">
                     <h3>Jordan Retro "Reguetón"</h3>
                     <p class="price"><span class="old-price">190,00€</span><span class="curr-p" data-base="190">190,00 €</span></p>
@@ -139,7 +135,7 @@
 
         <div class="coupon-area">
             <h2>🎫 ¿CONOCES A BRIAN?</h2>
-            <input type="text" id="cup-in" style="padding:15px; width:320px; border:2px solid #000; text-align:center; font-weight:bold; margin-bottom:15px;" placeholder="CÓDIGO VIP">
+            <input type="text" id="cup-in" style="padding:15px; width:320px; border:2px solid #000; text-align:center; font-weight:bold; margin-bottom:15px;" placeholder="INTRODUCE EL CÓDIGO VIP">
             <br>
             <button onclick="validaCupon()" class="btn" style="max-width:250px;">APLICAR 60% DTO</button>
             <p id="cup-msg" style="margin-top:20px; font-weight:bold;"></p>
@@ -148,28 +144,28 @@
 
     <div id="contactModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="cerrarModal()">&times;</span>
-            <div id="modal-icon" style="font-size: 50px; margin-bottom: 20px;">📦</div>
-            <h2 id="m-prod">PRODUCTO</h2>
-            <p id="m-talla">Talla seleccionada</p>
-            <p>Para finalizar la compra, contacta con nosotros vía email. Aceptamos Bizum y envíos nacionales.</p>
+            <h2 id="m-prod" style="font-weight:900; text-transform:uppercase;">PRODUCTO</h2>
+            <p id="m-talla" style="font-weight:bold; color:var(--rojo);"></p>
+            <p>Para finalizar la compra y gestionar el envío, contacta con Brian directamente:</p>
             <div class="contact-box">notengopapa602@gmail.com</div>
-            <button class="btn" id="finalBtn">ENVIAR CORREO AHORA</button>
+            <button class="btn" id="finalBtn">CONTACTAR POR CORREO</button>
+            <button class="btn" onclick="cerrarModal()" style="background:#eee; color:#000; margin-top:10px;">CERRAR</button>
         </div>
     </div>
 
     <div class="meme-area">
         <h2>CENTRO DE ENTRETENIMIENTO</h2>
+        <p>Si no carga el meme, es porque Brian está ocupado contando billetes. Reintenta.</p>
         <button onclick="getMeme()" class="btn" style="max-width:250px; background:#fff; color:#000;">¡GENERAR MEME! 🚀</button>
         <br><img id="meme-img" src="">
     </div>
 
     <footer>
-        <p style="opacity: 0.5; font-size: 11px;">HECHOPAGORDOS © 2026 | SIN WHATSAPP | PROFESSIONAL ARCHIVE</p>
+        <p style="opacity: 0.5; font-size: 11px;">HECHOPAGORDOS ARCHIVE © 2026 | PROFESSIONAL EMAIL ONLY</p>
     </footer>
 
     <script>
-        // Tallas 37-53
+        // Lógica de tallas
         document.querySelectorAll('.size-sel').forEach(s => {
             for(let i=37; i<=53; i++){
                 let o = document.createElement('option');
@@ -178,28 +174,25 @@
             }
         });
 
-        // Modal
-        let prodTemp = "", tallaTemp = "";
+        // Modal de contacto
         function abrirModal(p, idS) {
-            prodTemp = p;
-            tallaTemp = idS ? "Talla " + document.getElementById(idS).value : "Talla Única";
-            document.getElementById('m-prod').innerText = prodTemp;
-            document.getElementById('m-talla').innerText = tallaTemp;
+            const talla = idS ? "Talla " + document.getElementById(idS).value : "Talla Única";
+            document.getElementById('m-prod').innerText = p;
+            document.getElementById('m-talla').innerText = talla;
             document.getElementById('contactModal').style.display = 'flex';
             
             document.getElementById('finalBtn').onclick = function() {
-                const precio = document.querySelector(`[alt*='${p.split(' ')[0]}']`)?.closest('.card').querySelector('.curr-p').innerText;
-                const body = encodeURIComponent(`Hola Brian,\n\nQuiero el siguiente artículo:\nItem: ${prodTemp}\n${tallaTemp}\nPrecio: ${precio}\n\nEspero instrucciones para el Bizum.\n\nSaludos.`);
-                window.location.href = `mailto:notengopapa602@gmail.com?subject=PEDIDO: ${prodTemp.toUpperCase()}&body=${body}`;
+                const precio = document.querySelector(`[alt*='${p.substring(0,4)}']`)?.closest('.card').querySelector('.curr-p').innerText;
+                const body = encodeURIComponent(`Hola Brian,\n\nSolicito el pedido de:\nItem: ${p}\n${talla}\nPrecio mostrado: ${precio}\n\nEspero instrucciones para el pago.\n\nSaludos.`);
+                window.location.href = `mailto:notengopapa602@gmail.com?subject=PEDIDO: ${p.toUpperCase()}&body=${body}`;
             };
         }
         function cerrarModal() { document.getElementById('contactModal').style.display = 'none'; }
 
         // Cupon 60%
         function validaCupon() {
-            const v = document.getElementById('cup-in').value.trim();
-            if(v === 'ConozcoaBrianNosoyGordo') {
-                document.getElementById('cup-msg').innerHTML = "✅ ¡BRIAN TE HA BENDECIDO! 60% DE DESCUENTO.";
+            if(document.getElementById('cup-in').value.trim() === 'ConozcoaBrianNosoyGordo') {
+                document.getElementById('cup-msg').innerHTML = "✅ BRIAN CONFIRMADO. PRECIOS ACTUALIZADOS.";
                 document.getElementById('cup-msg').style.color = "green";
                 document.querySelectorAll('.curr-p').forEach((p, i) => {
                     const base = parseFloat(p.getAttribute('data-base'));
@@ -213,13 +206,14 @@
             }
         }
 
+        // Generar memes
         async function getMeme() {
             const img = document.getElementById('meme-img');
             try {
                 const r = await fetch('https://meme-api.com/gimme/SpanishMemes');
                 const d = await r.json();
                 img.src = d.url; img.style.display = 'inline-block';
-            } catch(e) { alert("Brian está ocupado, dale otra vez."); }
+            } catch(e) { alert("Brian sigue contando billetes. Dale otra vez."); }
         }
     </script>
 </body>
