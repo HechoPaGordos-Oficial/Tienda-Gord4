@@ -3,194 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HechoPaGordos - Premium Store</title>
+    <title>HechoPaGordos - Tienda Oficial</title>
     <style>
-        /* ESTILO DARK LUXURY INSPIRADO EN LA IMAGEN */
-        body { 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
-            margin: 0; 
-            background-color: #000000; /* Fondo negro puro */
-            color: #ffffff; 
-        }
-
-        /* Navegación Minimalista */
-        nav { 
-            display: flex; justify-content: space-between; align-items: center; 
-            padding: 20px 40px; background: #000; border-bottom: 1px solid #222;
-            position: sticky; top: 0; z-index: 100;
-        }
-        .logo { font-weight: 900; font-size: 20px; text-transform: uppercase; letter-spacing: 3px; }
-        .nav-links { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* Banner Principal (Hero) */
-        .hero { 
-            position: relative; height: 60vh; background: #111;
-            display: flex; align-items: center; justify-content: center;
-            text-align: center; border-bottom: 1px solid #222;
-        }
-        .hero-content h1 { font-size: 45px; font-weight: 800; text-transform: uppercase; margin: 0; }
-        .hero-content p { font-size: 14px; color: #888; margin-top: 10px; letter-spacing: 2px; }
-
-        /* Categorías Circulares (Como en la foto) */
-        .categorias-container { 
-            display: flex; justify-content: center; gap: 20px; padding: 40px 20px;
-            overflow-x: auto;
-        }
-        .cat-circle { 
-            width: 80px; text-align: center; cursor: pointer;
-        }
-        .cat-circle div { 
-            width: 80px; height: 80px; border-radius: 50%; 
-            background: #1a1a1a; margin-bottom: 10px; border: 1px solid #333;
-            transition: 0.3s;
-        }
-        .cat-circle:hover div { border-color: #fff; }
-        .cat-circle span { font-size: 11px; font-weight: bold; color: #888; text-transform: uppercase; }
-
-        /* Grid de Productos Moderno */
-        .seccion-titulo { padding: 20px 40px; font-size: 18px; font-weight: 700; text-transform: uppercase; border-top: 1px solid #222; }
-        .grid-productos { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 2px; background: #222; /* Crea líneas finas entre fotos */
-            padding: 0;
-        }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; background-color: #ffffff; color: #111; }
         
-        .producto-card { 
-            background: #000; padding: 20px; transition: 0.3s;
-        }
-        .img-box { 
-            background: #0a0a0a; margin-bottom: 15px; position: relative;
-        }
-        .img-box img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: white; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #f1f1f1; }
+        .logo { font-weight: 900; font-size: 22px; letter-spacing: -1.5px; text-transform: uppercase; }
+
+        .hero { text-align: center; padding: 80px 20px; background-color: #f5f5f5; margin-bottom: 40px; }
+        .hero h1 { font-size: 50px; font-weight: 900; font-style: italic; text-transform: uppercase; margin: 0; line-height: 0.8; }
+
+        .grid-productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding: 0 30px 60px 30px; }
+        .producto-card { background: #fff; }
+        .foto-unica, .galeria-doble { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; background: #f6f6f6; }
         .galeria-doble { display: flex; gap: 2px; }
-        .galeria-doble img { width: 50%; }
-
-        .info { padding: 10px 0; }
-        .nombre { font-size: 16px; font-weight: 600; margin-bottom: 5px; }
-        .precio { font-size: 15px; color: #fff; font-weight: 900; }
+        .galeria-doble img { width: 50%; aspect-ratio: 1/1; object-fit: cover; }
         
-        .btn-comprar { 
-            width: 100%; padding: 12px; margin-top: 15px; border: 1px solid #fff;
-            background: transparent; color: #fff; font-weight: 700; 
-            text-transform: uppercase; font-size: 12px; cursor: pointer; transition: 0.3s;
-        }
-        .btn-comprar:hover { background: #fff; color: #000; }
+        .info { padding: 15px 0; }
+        .nombre { font-weight: bold; font-size: 18px; margin: 5px 0; }
+        .precio { font-weight: 600; font-size: 17px; margin-bottom: 15px; }
+        .btn-comprar { display: block; text-align: center; border: 1.5px solid #111; padding: 12px; border-radius: 30px; font-weight: bold; cursor: pointer; transition: 0.3s; text-decoration: none; color: #111; }
+        .btn-comprar:hover { background: #111; color: #fff; }
 
-        /* Modal y Tallas */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; padding: 15px; }
-        .modal-content { 
-            background: #000; border: 1px solid #333; padding: 40px; 
-            border-radius: 0px; width: 100%; max-width: 400px; text-align: center;
-        }
+        /* MODAL */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; }
+        .modal-content { background: white; padding: 30px; border-radius: 24px; width: 90%; max-width: 420px; text-align: center; max-height: 90vh; overflow-y: auto; position: relative; }
         
-        .tallas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0; }
-        .talla-item { border: 1px solid #333; padding: 10px; font-size: 12px; cursor: pointer; }
-        .talla-item.active { background: #fff; color: #000; }
+        .tallas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 20px 0; }
+        .talla-item { border: 1px solid #ddd; padding: 10px 0; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        .talla-item.active { background: #111; color: #fff; border-color: #111; }
 
-        .cupon-box { margin: 25px 0; border: 1px dashed #444; padding: 15px; }
-        .input-cupon { width: 100%; padding: 10px; background: #111; border: 1px solid #333; color: #fff; text-align: center; margin-bottom: 10px; box-sizing: border-box;}
-        
-        .aviso-gordos { 
-            display: none; background: #ff0000; color: #fff; padding: 10px; 
-            font-weight: 900; font-size: 12px; text-transform: uppercase; margin-top: 10px;
-        }
+        .cupon-box { margin: 20px 0; padding: 15px; background: #fff0f0; border: 2px solid #ff4d4d; border-radius: 15px; }
+        .input-cupon { width: 90%; padding: 10px; border: 1px solid #ddd; border-radius: 20px; text-align: center; margin-bottom: 10px; font-weight: bold; }
+        .aviso-gordos { display: none; background: #d90429; color: white; padding: 12px; border-radius: 10px; font-weight: 900; text-transform: uppercase; margin-top: 10px; }
 
-        footer { text-align: center; padding: 60px; color: #444; font-size: 10px; letter-spacing: 2px; }
+        /* AVISO DE CONTACTO GUAPO */
+        .seccion-final { display: none; background: #fafafa; border: 3px solid #111; padding: 25px; border-radius: 20px; margin-top: 20px; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .seccion-final h3 { margin: 0 0 10px 0; text-transform: uppercase; font-weight: 900; font-style: italic; }
+        .email-display { font-size: 14px; font-weight: bold; color: #111; background: #eee; padding: 10px; border-radius: 8px; margin: 15px 0; word-break: break-all; }
+
+        footer { text-align: center; padding: 40px; background: #111; color: #fff; font-size: 12px; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">HechoPaGordos</div>
-        <div class="nav-links">SHOP | NEW | ABOUT</div>
+        <div style="font-weight: bold; font-size: 12px; letter-spacing: 1px;">EXCLUSIVE ARCHIVE</div>
     </nav>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1>STREETWEAR<br>ARCHIVE</h1>
-            <p>LIMITED DROPS ONLY</p>
-        </div>
+        <h1>STREETWEAR<br>ESSENTIALS</h1>
     </section>
-
-    <div class="categorias-container">
-        <div class="cat-circle"><div></div><span>Jordan</span></div>
-        <div class="cat-circle"><div></div><span>Nike</span></div>
-        <div class="cat-circle"><div></div><span>Fútbol</span></div>
-        <div class="cat-circle"><div></div><span>Ofertas</span></div>
-    </div>
-
-    <div class="seccion-titulo">Recién llegados</div>
 
     <div class="grid-productos">
         <div class="producto-card">
-            <div class="img-box galeria-doble">
+            <div class="galeria-doble">
                 <img src="Air_Force_one_negras.jpg" alt="1">
                 <img src="Air-Force-one-Negras.jpg" alt="2">
             </div>
             <div class="info">
                 <div class="nombre">Air Force One "Black"</div>
                 <div class="precio">110,00 €</div>
-                <button class="btn-comprar" onclick="abrirCompra('Air Force One Black', 110)">Comprar</button>
+                <div class="btn-comprar" onclick="abrirCompra('Air Force One Black', 110)">Comprar ahora</div>
             </div>
         </div>
 
         <div class="producto-card">
-            <div class="img-box">
-                <img src="Jordan-5-G1.jpg" alt="J5">
+            <img src="Tele-New-Generation.jpg" class="foto-unica" alt="Tele New Gen">
+            <div class="info">
+                <div class="nombre">Tele New Generation</div>
+                <div class="precio">3500,00 €</div>
+                <div class="btn-comprar" onclick="abrirCompra('Tele New Generation', 3500)">Comprar ahora</div>
             </div>
+        </div>
+
+        <div class="producto-card">
+            <img src="Jordan-5-G1.jpg" class="foto-unica" alt="J5">
             <div class="info">
                 <div class="nombre">Jordan 5 G1 Especial</div>
                 <div class="precio">189,99 €</div>
-                <button class="btn-comprar" onclick="abrirCompra('Jordan 5 G1', 189.99)">Comprar</button>
-            </div>
-        </div>
-        
-        <div class="producto-card">
-            <div class="img-box">
-                <img src="Jordan-Regueton.jpg" alt="JR">
-            </div>
-            <div class="info">
-                <div class="nombre">Jordan "Regueton" Style</div>
-                <div class="precio">210,00 €</div>
-                <button class="btn-comprar" onclick="abrirCompra('Jordan Regueton', 210)">Comprar</button>
+                <div class="btn-comprar" onclick="abrirCompra('Jordan 5 G1', 189.99)">Comprar ahora</div>
             </div>
         </div>
 
         <div class="producto-card">
-            <div class="img-box">
-                <img src="Botines_Futbol_Elegante.jpg" alt="Futbol">
+            <img src="Jordan-Regueton.jpg" class="foto-unica" alt="JR">
+            <div class="info">
+                <div class="nombre">Jordan "Regueton" Style</div>
+                <div class="precio">210,00 €</div>
+                <div class="btn-comprar" onclick="abrirCompra('Jordan Regueton', 210)">Comprar ahora</div>
             </div>
+        </div>
+
+        <div class="producto-card">
+            <img src="Botines_Futbol_Elegante.jpg" class="foto-unica" alt="FB">
             <div class="info">
                 <div class="nombre">Botines Futbol Elegante</div>
                 <div class="precio">84,95 €</div>
-                <button class="btn-comprar" onclick="abrirCompra('Botines Futbol', 84.95)">Comprar</button>
+                <div class="btn-comprar" onclick="abrirCompra('Botines Futbol', 84.95)">Comprar ahora</div>
             </div>
         </div>
     </div>
 
     <div id="modalCompra" class="modal">
         <div class="modal-content">
-            <h2 id="modalNombre" style="margin:0; font-size: 18px;">PRODUCTO</h2>
-            <p id="modalPrecio" style="font-size: 24px; font-weight: 900;"></p>
-            
-            <div id="pasoTallas">
-                <p style="font-size: 11px; color: #666;">SELECCIONA TALLA (37-53):</p>
+            <div id="pantalla-seleccion">
+                <h2 id="modalNombre" style="margin:0; text-transform: uppercase;">Producto</h2>
+                <p id="modalPrecio" style="font-size: 32px; font-weight: 900; margin: 10px 0;"></p>
+                
+                <p style="font-size: 13px; font-weight: bold; color: #666;">ELIGE TU TALLA (37 - 53):</p>
                 <div id="gridTallas" class="tallas-grid"></div>
 
                 <div class="cupon-box">
-                    <input type="text" id="inputCupon" class="input-cupon" placeholder="CÓDIGO SECRETO">
-                    <button id="btnAplicar" class="btn-comprar" onclick="validarCupon()">Canjear</button>
-                    <div id="avisoGordos" class="aviso-gordos">¡NO PERMITIMOS GORDOS!</div>
+                    <input type="text" id="inputCupon" class="input-cupon" placeholder="¿CÓDIGO SECRETO?">
+                    <button class="btn-comprar" style="font-size: 11px; padding: 10px;" onclick="validarCupon()">Canjear</button>
+                    <div id="avisoGordos" class="aviso-gordos">(PARA GORDOS NO)</div>
                 </div>
 
-                <button id="btnConfirmar" class="btn-comprar" style="display:none; background:#fff; color:#000;" onclick="irAContacto()">Confirmar</button>
+                <button id="btnConf" class="btn-comprar" style="display:none; background:#111; color:#fff;" onclick="mostrarContacto()">Confirmar Pedido</button>
+                <button onclick="cerrarModal()" style="margin-top:15px; border:none; background:none; color:#bbb; cursor:pointer; font-size: 12px;">Cancelar</button>
             </div>
 
-            <div id="seccionContacto" style="display:none;">
-                <p style="font-size: 12px;">CONTACTO PARA PAGO:</p>
-                <div style="padding:15px; background:#111; margin: 15px 0;">notengopapa602@gmail.com</div>
-                <a href="mailto:notengopapa602@gmail.com" class="btn-comprar" style="text-decoration:none; display:block;">Enviar email</a>
-                <button onclick="cerrarModal()" style="background:none; border:none; color:#444; margin-top:20px; cursor:pointer; font-size:10px;">CERRAR</button>
+            <div id="seccionContacto" class="seccion-final">
+                <h3>¡CASI ES TUYO!</h3>
+                <p style="font-size: 14px; line-height: 1.4;">Para finalizar el pago y el envío, contacta con nosotros ahora:</p>
+                <div class="email-display">notengopapa602@gmail.com</div>
+                <p style="font-size: 12px; font-weight: bold;">Indica tu nombre y el producto elegido.</p>
+                <a href="mailto:notengopapa602@gmail.com" class="btn-comprar" style="background:#111; color:#fff;">ENVIAR EMAIL AHORA</a>
+                <button onclick="cerrarModal()" style="margin-top:20px; border:none; background:none; color:#999; cursor:pointer; font-size: 11px; text-decoration: underline;">Volver a la tienda</button>
             </div>
         </div>
     </div>
@@ -200,12 +142,11 @@
         const grid = document.getElementById('gridTallas');
         for (let i = 37; i <= 53; i++) {
             let div = document.createElement('div');
-            div.className = 'talla-item';
-            div.innerText = i;
+            div.className = 'talla-item'; div.innerText = i;
             div.onclick = function() {
                 document.querySelectorAll('.talla-item').forEach(el => el.classList.remove('active'));
                 this.classList.add('active');
-                document.getElementById('btnConfirmar').style.display = "block";
+                document.getElementById('btnConf').style.display = "block";
             };
             grid.appendChild(div);
         }
@@ -214,30 +155,31 @@
             precioOriginal = precio;
             document.getElementById('modalNombre').innerText = nombre;
             document.getElementById('modalPrecio').innerText = precio.toFixed(2) + " €";
+            document.getElementById('modalPrecio').style.color = "#111";
             document.getElementById('modalCompra').style.display = "flex";
-            document.getElementById('pasoTallas').style.display = "block";
+            document.getElementById('pantalla-seleccion').style.display = "block";
             document.getElementById('seccionContacto').style.display = "none";
             document.getElementById('avisoGordos').style.display = "none";
-            document.getElementById('btnAplicar').style.display = "block";
+            document.getElementById('btnConf').style.display = "none";
             document.getElementById('inputCupon').value = "";
         }
 
         function validarCupon() {
             if (document.getElementById('inputCupon').value === "ConozcoaBrianNosoyGordo") {
                 document.getElementById('modalPrecio').innerText = (precioOriginal * 0.4).toFixed(2) + " €";
+                document.getElementById('modalPrecio').style.color = "#d90429";
                 document.getElementById('avisoGordos').style.display = "block";
-                document.getElementById('btnAplicar').style.display = "none";
-            } else { alert("CÓDIGO ERRÓNEO"); }
+            } else { alert("Código incorrecto"); }
         }
 
-        function irAContacto() {
-            document.getElementById('pasoTallas').style.display = "none";
+        function mostrarContacto() {
+            document.getElementById('pantalla-seleccion').style.display = "none";
             document.getElementById('seccionContacto').style.display = "block";
         }
 
         function cerrarModal() { document.getElementById('modalCompra').style.display = "none"; }
     </script>
 
-    <footer>HECHOPAGORDOS ARCHIVE © 2026</footer>
+    <footer>HECHOPAGORDOS S.L. © 2026</footer>
 </body>
 </html>
