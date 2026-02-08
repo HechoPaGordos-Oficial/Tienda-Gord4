@@ -5,17 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>HechoPaGordos | Streetwear Archive & Sneakers</title>
-    <meta name="description" content="La tienda oficial de HechoPaGordos. Encuentra las mejores Jordan, Air Force One y la Tele New Generation. Streetwear exclusivo.">
-    <meta name="keywords" content="HechoPaGordos, zapatillas, streetwear, comprar Jordan, sneakers España, Tele New Generation">
-    <meta name="author" content="HechoPaGordos">
+    <meta name="description" content="La tienda oficial de HechoPaGordos. Sneakers, la Tele New Generation y la Thompson Peppa Pig.">
     <meta name="robots" content="index, follow">
 
     <style>
         body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; background-color: #ffffff; color: #111; }
-        
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: white; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #f1f1f1; }
         .logo { font-weight: 900; font-size: 22px; letter-spacing: -1.5px; text-transform: uppercase; }
-
         .hero { text-align: center; padding: 80px 20px; background-color: #f5f5f5; margin-bottom: 40px; }
         .hero h1 { font-size: 50px; font-weight: 900; font-style: italic; text-transform: uppercase; margin: 0; line-height: 0.8; }
 
@@ -31,40 +27,61 @@
         .btn-comprar { display: block; text-align: center; border: 1.5px solid #111; padding: 12px; border-radius: 30px; font-weight: bold; cursor: pointer; transition: 0.3s; text-decoration: none; color: #111; }
         .btn-comprar:hover { background: #111; color: #fff; }
 
-        /* MODAL */
+        /* MODAL Y CUPÓN */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; }
         .modal-content { background: white; padding: 30px; border-radius: 24px; width: 90%; max-width: 420px; text-align: center; max-height: 90vh; overflow-y: auto; position: relative; }
-        
         .tallas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 20px 0; }
-        .talla-item { border: 1px solid #ddd; padding: 10px 0; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
-        .talla-item.active { background: #111; color: #fff; border-color: #111; }
+        .talla-item { border: 1px solid #ddd; padding: 10px 0; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .talla-item.active { background: #111; color: #fff; }
 
         .cupon-box { margin: 20px 0; padding: 15px; background: #fff0f0; border: 2px solid #ff4d4d; border-radius: 15px; }
         .input-cupon { width: 90%; padding: 10px; border: 1px solid #ddd; border-radius: 20px; text-align: center; margin-bottom: 10px; font-weight: bold; }
-        .aviso-gordos { display: none; background: #d90429; color: white; padding: 12px; border-radius: 10px; font-weight: 900; text-transform: uppercase; animation: shake 0.5s; margin-top: 10px; }
-        @keyframes shake { 0%, 100% {transform: translateX(0);} 25% {transform: translateX(-5px);} 75% {transform: translateX(5px);} }
+        .aviso-gordos { display: none; background: #d90429; color: white; padding: 12px; border-radius: 10px; font-weight: 900; text-transform: uppercase; margin-top: 10px; }
 
-        /* SECCION CONTACTO GUAPA */
-        .seccion-final { display: none; background: #fafafa; border: 3px solid #111; padding: 25px; border-radius: 20px; margin-top: 20px; animation: fadeIn 0.5s; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .seccion-final h3 { margin: 0 0 10px 0; text-transform: uppercase; font-weight: 900; font-style: italic; }
-        .email-display { font-size: 14px; font-weight: bold; color: #111; background: #eee; padding: 10px; border-radius: 8px; margin: 15px 0; word-break: break-all; }
-
-        footer { text-align: center; padding: 40px; background: #111; color: #fff; font-size: 12px; text-transform: uppercase; }
+        .seccion-final { display: none; background: #fafafa; border: 3px solid #111; padding: 25px; border-radius: 20px; margin-top: 20px; }
+        .email-display { font-size: 14px; font-weight: bold; color: #111; background: #eee; padding: 10px; border-radius: 8px; margin: 15px 0; }
+        footer { text-align: center; padding: 40px; background: #111; color: #fff; font-size: 12px; }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">HechoPaGordos</div>
-        <div style="font-weight: bold; font-size: 12px; letter-spacing: 1px;">EXCLUSIVE DROP</div>
+        <div style="font-weight: bold; font-size: 12px;">OFFICIAL ARCHIVE</div>
     </nav>
 
     <section class="hero">
-        <h1>STREETWEAR<br>ARCHIVE</h1>
+        <h1>NEW DROP<br>STREETWEAR</h1>
     </section>
 
     <div class="grid-productos">
+        <div class="producto-card">
+            <img src="Nike-Hachis.jpg" class="foto-unica" alt="Nike Hachis">
+            <div class="info">
+                <div class="nombre">Nike "Hachís" Special Edition</div>
+                <div class="precio">160,00 €</div>
+                <div class="btn-comprar" onclick="abrirCompra('Nike Hachis', 160, true)">Comprar ahora</div>
+            </div>
+        </div>
+
+        <div class="producto-card">
+            <img src="Thompson-Contender-(EdicionPeppaPig).jpg" class="foto-unica" alt="Peppa Pig">
+            <div class="info">
+                <div class="nombre">Thompson Contender (Edición Peppa Pig)</div>
+                <div class="precio">999,99 €</div>
+                <div class="btn-comprar" onclick="abrirCompra('Thompson Peppa Pig', 999.99, false)">Comprar ahora</div>
+            </div>
+        </div>
+
+        <div class="producto-card">
+            <img src="Tele-New-Generation.jpg" class="foto-unica" alt="Tele">
+            <div class="info">
+                <div class="nombre">Tele New Generation</div>
+                <div class="precio">3500,00 €</div>
+                <div class="btn-comprar" onclick="abrirCompra('Tele New Gen', 3500, false)">Comprar ahora</div>
+            </div>
+        </div>
+
         <div class="producto-card">
             <div class="galeria-doble">
                 <img src="Air_Force_one_negras.jpg" alt="1">
@@ -76,71 +93,35 @@
                 <div class="btn-comprar" onclick="abrirCompra('Air Force One Black', 110, true)">Comprar ahora</div>
             </div>
         </div>
-
-        <div class="producto-card">
-            <img src="Tele-New-Generation.jpg" class="foto-unica" alt="Tele New Gen">
-            <div class="info">
-                <div class="nombre">Tele New Generation</div>
-                <div class="precio">3500,00 €</div>
-                <div class="btn-comprar" onclick="abrirCompra('Tele New Generation', 3500, false)">Comprar ahora</div>
-            </div>
-        </div>
-
-        <div class="producto-card">
-            <img src="Jordan-5-G1.jpg" class="foto-unica" alt="J5">
-            <div class="info">
-                <div class="nombre">Jordan 5 G1 Especial</div>
-                <div class="precio">189,99 €</div>
-                <div class="btn-comprar" onclick="abrirCompra('Jordan 5 G1', 189.99, true)">Comprar ahora</div>
-            </div>
-        </div>
-
-        <div class="producto-card">
-            <img src="Jordan-Regueton.jpg" class="foto-unica" alt="JR">
-            <div class="info">
-                <div class="nombre">Jordan "Regueton" Style</div>
-                <div class="precio">210,00 €</div>
-                <div class="btn-comprar" onclick="abrirCompra('Jordan Regueton', 210, true)">Comprar ahora</div>
-            </div>
-        </div>
-
-        <div class="producto-card">
-            <img src="Botines_Futbol_Elegante.jpg" class="foto-unica" alt="FB">
-            <div class="info">
-                <div class="nombre">Botines Futbol Elegante</div>
-                <div class="precio">84,95 €</div>
-                <div class="btn-comprar" onclick="abrirCompra('Botines Futbol', 84.95, true)">Comprar ahora</div>
-            </div>
-        </div>
     </div>
 
     <div id="modalCompra" class="modal">
         <div class="modal-content">
             <div id="pantalla-seleccion">
-                <h2 id="modalNombre" style="margin:0; text-transform: uppercase;">Producto</h2>
-                <p id="modalPrecio" style="font-size: 32px; font-weight: 900; margin: 10px 0;"></p>
+                <h2 id="modalNombre">Producto</h2>
+                <p id="modalPrecio" style="font-size: 32px; font-weight: 900;"></p>
                 
                 <div id="bloque-tallas">
-                    <p style="font-size: 13px; font-weight: bold; color: #666;">ELIGE TU TALLA (37 - 53):</p>
+                    <p>ELIGE TU TALLA (37 - 53):</p>
                     <div id="gridTallas" class="tallas-grid"></div>
                 </div>
 
                 <div class="cupon-box">
-                    <input type="text" id="inputCupon" class="input-cupon" placeholder="¿CÓDIGO SECRETO?">
-                    <button class="btn-comprar" style="font-size: 11px; padding: 10px;" onclick="validarCupon()">Canjear</button>
+                    <input type="text" id="inputCupon" class="input-cupon" placeholder="CÓDIGO SECRETO">
+                    <button class="btn-comprar" style="font-size: 11px;" onclick="validarCupon()">Canjear</button>
                     <div id="avisoGordos" class="aviso-gordos">(PARA GORDOS NO)</div>
                 </div>
 
                 <button id="btnConf" class="btn-comprar" style="display:none; background:#111; color:#fff;" onclick="mostrarContacto()">Confirmar Pedido</button>
-                <button onclick="cerrarModal()" style="margin-top:15px; border:none; background:none; color:#bbb; cursor:pointer; font-size: 12px;">Cancelar</button>
+                <button onclick="cerrarModal()" style="margin-top:15px; border:none; background:none; cursor:pointer;">Cancelar</button>
             </div>
 
             <div id="seccionContacto" class="seccion-final">
                 <h3>¡CASI ES TUYO!</h3>
-                <p style="font-size: 14px;">Para finalizar el pago del pedido, contacta con nosotros:</p>
+                <p>Para finalizar el pago, contacta con nosotros:</p>
                 <div class="email-display">notengopapa602@gmail.com</div>
                 <a href="mailto:notengopapa602@gmail.com" class="btn-comprar" style="background:#111; color:#fff;">ENVIAR EMAIL AHORA</a>
-                <button onclick="cerrarModal()" style="margin-top:20px; border:none; background:none; color:#999; cursor:pointer; font-size: 11px;">Cerrar</button>
+                <button onclick="cerrarModal()" style="margin-top:20px; border:none; background:none;">Cerrar</button>
             </div>
         </div>
     </div>
@@ -168,14 +149,13 @@
             document.getElementById('pantalla-seleccion').style.display = "block";
             document.getElementById('seccionContacto').style.display = "none";
             document.getElementById('avisoGordos').style.display = "none";
-            document.getElementById('inputCupon').value = "";
             
             if (tieneTalla) {
                 document.getElementById('bloque-tallas').style.display = "block";
                 document.getElementById('btnConf').style.display = "none";
             } else {
                 document.getElementById('bloque-tallas').style.display = "none";
-                document.getElementById('btnConf').style.display = "block"; 
+                document.getElementById('btnConf').style.display = "block";
             }
         }
 
@@ -184,7 +164,7 @@
                 document.getElementById('modalPrecio').innerText = (precioOriginal * 0.4).toFixed(2) + " €";
                 document.getElementById('modalPrecio').style.color = "#d90429";
                 document.getElementById('avisoGordos').style.display = "block";
-            } else { alert("Código incorrecto"); }
+            }
         }
 
         function mostrarContacto() {
