@@ -5,44 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HechoPaGordos - Oficial</title>
     <style>
-        /* ESTILO INSPIRADO EN NIKE */
-        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; background-color: #ffffff; color: #111; }
+        /* ESTILO GLOBAL COMPLETO */
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; background-color: #ffffff; color: #111; overflow-x: hidden; }
         
-        /* Navegación */
+        /* Navegación Original */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: white; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #f1f1f1; }
-        .logo { font-weight: 900; font-size: 20px; letter-spacing: -1px; text-transform: uppercase; }
+        .logo { font-weight: 900; font-size: 22px; letter-spacing: -1.5px; text-transform: uppercase; }
         .menu-links { font-size: 14px; font-weight: bold; }
-        .menu-links span { margin-left: 15px; cursor: pointer; }
+        .menu-links span { margin-left: 15px; cursor: pointer; text-transform: uppercase; }
 
-        /* Hero / Banner Principal */
-        .hero { text-align: center; padding: 60px 20px; background-color: #f5f5f5; margin-bottom: 40px; }
-        .hero h1 { font-size: 45px; font-weight: 900; font-style: italic; text-transform: uppercase; margin: 0; letter-spacing: -2px; line-height: 0.9; }
-        .hero p { font-size: 16px; margin: 20px 0; color: #555; }
-        .btn-main { background: #111; color: #fff; padding: 12px 30px; text-decoration: none; border-radius: 30px; font-weight: bold; display: inline-block; }
-        .btn-main:hover { background: #444; }
+        /* Banner Principal */
+        .hero { text-align: center; padding: 80px 20px; background-color: #f5f5f5; margin-bottom: 40px; }
+        .hero h1 { font-size: 50px; font-weight: 900; font-style: italic; text-transform: uppercase; margin: 0; letter-spacing: -3px; line-height: 0.8; }
+        .hero p { font-size: 18px; margin: 20px 0; color: #444; font-weight: 500; }
+        .btn-main { background: #111; color: #fff; padding: 15px 35px; text-decoration: none; border-radius: 40px; font-weight: bold; display: inline-block; transition: 0.3s; }
 
-        /* Contenedor de Productos */
-        .seccion-titulo { padding: 0 30px; font-size: 24px; font-weight: bold; margin-bottom: 20px; }
-        .grid-productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 0 30px 50px 30px; }
+        /* Cuadrícula de Productos */
+        .seccion-titulo { padding: 0 30px; font-size: 26px; font-weight: bold; margin-bottom: 25px; text-transform: uppercase; }
+        .grid-productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding: 0 30px 60px 30px; }
         
-        /* Tarjeta de Producto */
         .producto-card { background: #fff; text-decoration: none; color: inherit; transition: 0.3s; }
-        .producto-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; background: #f6f6f6; }
-        .info { padding: 15px 0; }
-        .categoria { color: #757575; font-size: 14px; }
-        .nombre { font-weight: bold; font-size: 16px; margin: 5px 0; }
-        .precio { font-weight: bold; font-size: 16px; margin-bottom: 15px; }
         
-        /* Botón de Comprar */
-        .btn-comprar { display: block; text-align: center; border: 1px solid #111; padding: 10px; border-radius: 20px; font-weight: bold; text-decoration: none; color: #111; transition: 0.3s; }
+        /* Doble foto para las Air Force */
+        .galeria-doble { display: flex; gap: 2px; background: #f6f6f6; border-radius: 4px; overflow: hidden; }
+        .galeria-doble img { width: 50%; aspect-ratio: 1/1; object-fit: cover; }
+        
+        /* Foto única para el resto */
+        .foto-unica { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; background: #f6f6f6; }
+        
+        .info { padding: 15px 0; }
+        .categoria { color: #757575; font-size: 14px; font-weight: 500; }
+        .nombre { font-weight: bold; font-size: 18px; margin: 5px 0; }
+        .precio { font-weight: 600; font-size: 17px; margin-bottom: 15px; }
+        
+        .btn-comprar { display: block; text-align: center; border: 1.5px solid #111; padding: 12px; border-radius: 30px; font-weight: bold; text-decoration: none; color: #111; transition: 0.3s; cursor: pointer; }
         .btn-comprar:hover { background: #111; color: #fff; }
 
-        /* Ajustes para móvil */
+        footer { text-align: center; padding: 40px; background: #111; color: #fff; font-size: 13px; margin-top: 50px; }
+
         @media (max-width: 600px) {
-            .hero h1 { font-size: 35px; }
+            .hero h1 { font-size: 38px; }
             .grid-productos { grid-template-columns: 1fr; padding: 0 20px; }
         }
     </style>
+    <script>
+        function contactar() {
+            alert("notengopapa602@gmail.com contacta");
+        }
+    </script>
 </head>
 <body>
 
@@ -56,44 +66,73 @@
 
     <section class="hero">
         <h1>GRANDE POR<br>NATURALEZA</h1>
-        <p>Ropa diseñada para el máximo estilo y confort.</p>
-        <a href="#tienda" class="btn-main">Comprar lo nuevo</a>
+        <p>Estilo sin límites para los que no se conforman.</p>
+        <a href="#tienda" class="btn-main">Ver Colección</a>
     </section>
 
-    <div class="seccion-titulo" id="tienda">Novedades de la semana</div>
+    <div class="seccion-titulo" id="tienda">Novedades Destacadas</div>
 
     <div class="grid-productos">
+        
         <div class="producto-card">
-            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=500" alt="Camiseta">
+            <div class="galeria-doble">
+                <img src="Air_Force_one_negras.jpg" alt="Air Force Vista 1">
+                <img src="Air-Force-one-Negras.jpg" alt="Air Force Vista 2">
+            </div>
             <div class="info">
-                <div class="categoria">Ropa Oversize</div>
-                <div class="nombre">Camiseta Basic Black</div>
-                <div class="precio">24,99 €</div>
-                <a href="https://wa.me/TUNUMERO" class="btn-comprar">Comprar ahora</a>
+                <div class="categoria">Calzado - Doble Vista</div>
+                <div class="nombre">Air Force One "Black Edition"</div>
+                <div class="precio">110,00 €</div>
+                <div class="btn-comprar" onclick="contactar()">Comprar ahora</div>
             </div>
         </div>
 
         <div class="producto-card">
-            <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=500" alt="Sudadera">
+            <img src="Jordan-5-G1.jpg" class="foto-unica" alt="Jordan 5">
             <div class="info">
-                <div class="categoria">Hoodies</div>
-                <div class="nombre">Sudadera "Gordo Style"</div>
-                <div class="precio">49,99 €</div>
-                <a href="https://wa.me/TUNUMERO" class="btn-comprar">Comprar ahora</a>
+                <div class="categoria">Jordan Retro</div>
+                <div class="nombre">Jordan 5 G1 Especial</div>
+                <div class="precio">189,99 €</div>
+                <div class="btn-comprar" onclick="contactar()">Comprar ahora</div>
             </div>
         </div>
 
         <div class="producto-card">
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=500" alt="Tenis">
+            <img src="Jordan-Regueton.jpg" class="foto-unica" alt="Jordan Regueton">
             <div class="info">
-                <div class="categoria">Calzado</div>
-                <div class="nombre">Zapatillas Cloud Walker</div>
-                <div class="precio">89,99 €</div>
-                <a href="https://wa.me/TUNUMERO" class="btn-comprar">Comprar ahora</a>
+                <div class="categoria">Limited Edition</div>
+                <div class="nombre">Jordan "Regueton" Style</div>
+                <div class="precio">210,00 €</div>
+                <div class="btn-comprar" onclick="contactar()">Comprar ahora</div>
             </div>
         </div>
+
+        <div class="producto-card">
+            <img src="Botines_Futbol_Elegante.jpg" class="foto-unica" alt="Botines">
+            <div class="info">
+                <div class="categoria">Fútbol</div>
+                <div class="nombre">Botines Futbol Elegante</div>
+                <div class="precio">84,95 €</div>
+                <div class="btn-comprar" onclick="contactar()">Comprar ahora</div>
+            </div>
+        </div>
+
+        <div class="producto-card">
+            <img src="Jordan-collab-Amazon.jpg" class="foto-unica" alt="Jordan Collab">
+            <div class="info">
+                <div class="categoria">Collab Especial</div>
+                <div class="nombre">Jordan Collab Edition</div>
+                <div class="precio">155,00 €</div>
+                <div class="btn-comprar" onclick="contactar()">Comprar ahora</div>
+            </div>
+        </div>
+
     </div>
+
+    <footer>
+        <p>HECHO PA GORDOS OFICIAL © 2026</p>
+        <p style="opacity: 0.6;">notengopapa602@gmail.com contacta</p>
+    </footer>
 
 </body>
 </html>
-
