@@ -65,7 +65,32 @@
 
         footer { padding: 80px 20px; text-align: center; border-top: 2px solid #eee; background: #fff; font-size: 20px; }
         #visitas { color: var(--rojo); font-weight: 900; font-size: 24px; }
-    </style>
+                .price span { 
+            text-decoration: line-through; 
+            color: #999; 
+            font-size: 20px; 
+            margin-right: 10px;
+        }
+        .price { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        .badge-dto {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--rojo);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 900;
+            transform: rotate(15deg);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+    </style> 
 </head>
 <body id="mainBody">
 
@@ -78,7 +103,23 @@
     </header>
 
     <div class="container">
-        <div class="grid">
+        <div class="grid"><div class="card">
+    <div class="img-wrap">
+        <img src="Nike-Hachis.jpg"> <div style="position: absolute; top: 20px; right: 20px; background: var(--rojo); color: #fff; padding: 10px 20px; border-radius: 50px; font-weight: 900; transform: rotate(15deg); box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+            -20% DTO
+        </div>
+    </div>
+    <div class="info">
+        <h3>Nike Hachís "PRO"</h3>
+        <p class="price">
+            <span style="text-decoration: line-through; color: #999; font-size: 20px; margin-right: 10px;">140,00 €</span>
+            110,00 €
+        </p>
+        <select class="size-sel" id="s_desc"></select>
+        <button class="btn" onclick="abrirModal('Nike Hachis DTO', 's_desc')">Solicitar con Descuento</button>
+    </div>
+</div>
+
             
             <div class="card secret-overlay">
                 <div class="img-wrap">
