@@ -8,65 +8,52 @@
 
     <style>
         :root { --rojo: #d90429; --negro: #1a1a1a; --gris: #f8f9fa; --oro: #c2a01e; --oro-brillo: #ffeead; }
-        * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         
         body { font-family: 'Arial Black', Gadget, sans-serif; margin: 0; padding: 0; background: #fff; color: var(--negro); overflow-x: hidden; }
         body.billetes-mode { background: #000; color: #fff; }
         body.billetes-mode .card, body.billetes-mode header, body.billetes-mode .review-item { background: #0a0a0a; border-color: var(--oro); color: #fff; }
+        body.billetes-mode .review-text { color: #ccc; }
 
         .top-banner { background: var(--negro); color: #fff; text-align: center; padding: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; border-bottom: 3px solid var(--rojo); position: sticky; top: 0; z-index: 1001; }
         
         header { padding: 80px 20px; text-align: center; background: #fff; border-bottom: 1px solid #eee; position: relative; }
         header h1 { margin: 0; font-size: 5rem; font-weight: 900; letter-spacing: -4px; text-transform: uppercase; font-style: italic; cursor: pointer; display: inline-block; }
-        header h1:hover { color: var(--oro); text-shadow: 0 0 20px var(--oro); transform: scale(1.02); }
+        header h1:hover { transform: scale(1.05) skew(-5deg); color: var(--rojo); }
         
         .mode-toggle { position: absolute; top: 20px; right: 20px; padding: 12px 25px; background: var(--negro); color: #fff; border: 2px solid var(--oro); border-radius: 50px; cursor: pointer; font-size: 10px; font-weight: bold; z-index: 100; }
 
         .container { max-width: 1400px; margin: auto; padding: 50px 20px; }
         
-        /* ANIMACIÓN PRODUCTO SECRETO "GUAPA" */
-        @keyframes revealGold {
-            0% { transform: scale(0.5) rotate(-5deg); opacity: 0; filter: brightness(0); }
-            50% { filter: brightness(2); box-shadow: 0 0 100px var(--oro); }
-            100% { transform: scale(1) rotate(0deg); opacity: 1; filter: brightness(1); box-shadow: 0 0 40px var(--oro); }
-        }
-
-        #secret-card { 
-            display: none; 
-            border: 6px solid var(--oro); 
-            background: #000; 
-            color: #fff; 
-            animation: revealGold 1s ease-out forwards;
-            grid-column: 1 / -1;
-            max-width: 800px;
-            margin: 0 auto 50px auto;
-        }
-        #secret-card .info { color: #fff; }
-
+        /* GRID DE PRODUCTOS */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; }
         .card { border: 2px solid #eee; background: #fff; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; position: relative; }
-        .card:hover { transform: translateY(-15px); border-color: var(--rojo); }
+        .card:hover { transform: translateY(-15px); border-color: var(--rojo); box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
         
-        .img-wrap { height: 450px; overflow: hidden; background: #f0f0f0; display: flex; align-items: center; justify-content: center; }
+        .img-wrap { height: 450px; overflow: hidden; background: #f0f0f0; display: flex; align-items: center; justify-content: center; position: relative; }
         .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
         
+        /* ESTILO PRODUCTO SECRETO */
+        .secret-overlay { background: #000 !important; color: #fff; border: 4px solid var(--oro); }
+        .lock-icon { font-size: 100px; filter: drop-shadow(0 0 10px var(--oro)); }
+
         .info { padding: 40px; text-align: center; flex-grow: 1; color: #000; }
         .price { font-size: 32px; font-weight: 900; color: var(--rojo); margin-bottom: 25px; }
         
-        select { width: 100%; padding: 18px; border: 2px solid #000; margin-bottom: 20px; font-weight: bold; border-radius: 12px; font-size: 16px; }
+        select { width: 100%; padding: 18px; border: 2px solid #000; margin-bottom: 20px; font-weight: bold; border-radius: 12px; font-size: 16px; cursor: pointer; }
         .btn { width: 100%; padding: 25px; background: var(--negro); color: #fff; border: none; font-size: 16px; font-weight: 900; text-transform: uppercase; cursor: pointer; border-radius: 12px; }
         .btn:hover { background: var(--rojo); transform: scale(1.02); }
 
         /* RESEÑAS */
         .reviews { background: #f9f9f9; padding: 100px 20px; text-align: center; }
         .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1300px; margin: 50px auto; }
-        .review-item { padding: 30px; border-radius: 25px; background: #fff; text-align: left; display: flex; gap: 20px; border: 1px solid #ddd; align-items: center; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .review-img { width: 70px; height: 70px; border-radius: 50%; border: 3px solid var(--negro); object-fit: cover; }
+        .review-item { padding: 30px; border-radius: 25px; background: #fff; text-align: left; display: flex; gap: 20px; border: 1px solid #ddd; align-items: flex-start; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .review-img { width: 70px; height: 70px; border-radius: 50%; border: 3px solid var(--negro); object-fit: cover; flex-shrink: 0; }
         .stars { color: #ffbc00; font-size: 16px; display: block; margin-bottom: 10px; }
         .review-text { font-size: 14px; color: #333; line-height: 1.6; font-weight: 500; font-style: italic; }
         .review-author { display: block; font-weight: 900; color: var(--rojo); font-size: 12px; margin-top: 15px; text-transform: uppercase; }
 
-        /* MEMES AREA */
+        /* MEMES */
         .meme-area { background: var(--negro); color: #fff; padding: 100px 20px; text-align: center; border-top: 10px solid var(--rojo); }
         .meme-msg-fijo { margin-top: 25px; color: var(--oro); font-size: 18px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.4; }
         #meme-img { max-width: 90%; max-height: 600px; margin-top: 40px; display: none; border: 10px solid #fff; border-radius: 10px; }
@@ -74,7 +61,7 @@
         /* MODAL */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); align-items: center; justify-content: center; }
         .modal-content { background: #fff; padding: 60px; border-radius: 35px; text-align: center; max-width: 600px; width: 95%; border: 8px solid var(--oro); color: #000; }
-        .contact-box { background: #000; padding: 30px; border-radius: 15px; margin: 30px 0; font-family: 'Courier New', monospace; font-size: 22px; font-weight: bold; color: #fff; }
+        .contact-box { background: #000; padding: 30px; border-radius: 15px; margin: 30px 0; font-family: 'Courier New', monospace; font-size: 22px; font-weight: bold; color: #fff; word-break: break-all; }
 
         footer { padding: 80px 20px; text-align: center; border-top: 2px solid #eee; background: #fff; font-size: 20px; }
         #visitas { color: var(--rojo); font-weight: 900; font-size: 24px; }
@@ -86,24 +73,25 @@
 
     <header>
         <button class="mode-toggle" onclick="toggleBilletes()">MODO BILLETES 💸</button>
-        <h1 onclick="revelarSecreto()">HECHOPAGORDOS</h1>
+        <h1>HECHOPAGORDOS</h1>
         <p style="letter-spacing: 12px; font-weight: bold; font-size: 14px;">PREMIUM STREETWEAR ARCHIVE</p>
     </header>
 
     <div class="container">
-        <div class="card" id="secret-card">
-            <div class="img-wrap">
-                <img src="https://images.unsplash.com/photo-1544473244-f6895a69ad41?auto=format&fit=crop&w=1200&q=80">
-            </div>
-            <div class="info">
-                <h2 style="color:var(--oro); font-size: 40px;">🚢 EL YATE "GORDO" DE BRIAN</h2>
-                <p class="price" style="color:var(--oro)">15.000.000,00 €</p>
-                <p>Entrega inmediata en Puerto Banús. Bizum no disponible para este importe.</p>
-                <button class="btn" style="background:var(--oro); color:black;" onclick="abrirModal('YATE PRIVADO BRIAN', null)">SOLICITAR ATRAQUE</button>
-            </div>
-        </div>
-
         <div class="grid">
+            
+            <div class="card secret-overlay">
+                <div class="img-wrap">
+                    <div class="lock-icon">🔒</div>
+                </div>
+                <div class="info">
+                    <h3 style="color:var(--oro)">PRODUCTO SECRETO</h3>
+                    <p class="price" style="color:#fff">??? €</p>
+                    <p style="color:var(--oro)">Solo para clientes de alto nivel.</p>
+                    <button class="btn" style="background:var(--oro); color:#000" onclick="abrirModalSecreto()">DESBLOQUEAR</button>
+                </div>
+            </div>
+
             <div class="card">
                 <div class="img-wrap"><img src="Nike-Hachis.jpg"></div>
                 <div class="info">
@@ -186,12 +174,21 @@
         </div>
     </div>
 
+    <div id="secretModal" class="modal">
+        <div class="modal-content" style="background:#000; color:#fff; border-color:var(--oro)">
+            <h2 style="font-size: 40px; color:var(--oro)">ACCESO RESTRINGIDO</h2>
+            <p style="font-size: 20px;">Contacta a <b>notengopapa602@gmail.com</b> para desbloquear el producto secreto</p>
+            <div class="contact-box" style="border: 2px dashed var(--oro)">notengopapa602@gmail.com</div>
+            <button class="btn" style="background:var(--oro); color:#000" onclick="location.href='mailto:notengopapa602@gmail.com?subject=DESBLOQUEO PRODUCTO SECRETO'">DESBLOQUEAR AHORA</button>
+        </div>
+    </div>
+
     <footer>
         <p>HECHOPAGORDOS ARCHIVE © 2026 | VISITANTES REALES: <span id="visitas">714.220</span></p>
     </footer>
 
     <script>
-        // TALLAS 37-53
+        // GENERADOR DE TALLAS 37-53
         document.querySelectorAll('.size-sel').forEach(s => {
             for(let i=37; i<=53; i++) {
                 let o = document.createElement('option'); o.value = i; o.innerText = "Talla " + i; s.appendChild(o);
@@ -210,7 +207,6 @@
             {s:1, t:"Brian tarda 2 minutos en contestar. ¿Qué hace?", a:"Impaciente"},
             {s:5, t:"Nike Hachís auténticas 100%.", a:"Experto"},
             {s:5, t:"El modo billetes de la web es arte.", a:"Diseñador"},
-            // (El loop genera las 50 basándose en estas)
         ];
 
         const revWrap = document.getElementById('review-container');
@@ -224,20 +220,16 @@
             revWrap.appendChild(div);
         }
 
-        function revelarSecreto() {
-            const s = document.getElementById('secret-card');
-            s.style.display = (s.style.display === 'block') ? 'none' : 'block';
-            if(s.style.display === 'block') {
-                window.scrollTo({top: 0, behavior: 'smooth'});
-            }
-        }
-
         function toggleBilletes() { document.body.classList.toggle('billetes-mode'); }
 
         function abrirModal(p, sId) {
             document.getElementById('m-prod').innerText = p.toUpperCase();
             document.getElementById('m-talla').innerText = sId ? "Talla elegida: " + document.getElementById(sId).value : "ENVÍO VIP";
             document.getElementById('contactModal').style.display = 'flex';
+        }
+
+        function abrirModalSecreto() {
+            document.getElementById('secretModal').style.display = 'flex';
         }
 
         async function getMeme() {
@@ -255,7 +247,11 @@
             v.innerText = (n + Math.floor(Math.random()*10)+1).toLocaleString('es-ES');
         }, 1000);
 
-        window.onclick = (e) => { if(e.target.className === 'modal') e.target.style.display = 'none'; };
+        window.onclick = (e) => { 
+            if(e.target.className === 'modal') {
+                e.target.style.display = 'none';
+            }
+        };
     </script>
 </body>
 </html>
