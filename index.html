@@ -35,9 +35,10 @@
 
         .cupon-box { margin: 20px 0; padding: 15px; background: #fff0f0; border: 2px solid #ff4d4d; border-radius: 15px; }
         .input-cupon { width: 90%; padding: 10px; border: 1px solid #ddd; border-radius: 20px; text-align: center; margin-bottom: 10px; font-weight: bold; }
-        .aviso-gordos { display: none; background: #d90429; color: white; padding: 12px; border-radius: 10px; font-weight: 900; text-transform: uppercase; margin-top: 10px; }
+        .aviso-gordos { display: none; background: #d90429; color: white; padding: 12px; border-radius: 10px; font-weight: 900; text-transform: uppercase; animation: shake 0.5s; margin-top: 10px; }
+        @keyframes shake { 0%, 100% {transform: translateX(0);} 25% {transform: translateX(-5px);} 75% {transform: translateX(5px);} }
 
-        /* AVISO DE CONTACTO GUAPO */
+        /* SECCION CONTACTO GUAPA */
         .seccion-final { display: none; background: #fafafa; border: 3px solid #111; padding: 25px; border-radius: 20px; margin-top: 20px; animation: fadeIn 0.5s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .seccion-final h3 { margin: 0 0 10px 0; text-transform: uppercase; font-weight: 900; font-style: italic; }
@@ -50,11 +51,11 @@
 
     <nav>
         <div class="logo">HechoPaGordos</div>
-        <div style="font-weight: bold; font-size: 12px; letter-spacing: 1px;">EXCLUSIVE ARCHIVE</div>
+        <div style="font-weight: bold; font-size: 12px; letter-spacing: 1px;">EXCLUSIVE DROP</div>
     </nav>
 
     <section class="hero">
-        <h1>STREETWEAR<br>ESSENTIALS</h1>
+        <h1>STREETWEAR<br>ARCHIVE</h1>
     </section>
 
     <div class="grid-productos">
@@ -66,7 +67,7 @@
             <div class="info">
                 <div class="nombre">Air Force One "Black"</div>
                 <div class="precio">110,00 €</div>
-                <div class="btn-comprar" onclick="abrirCompra('Air Force One Black', 110)">Comprar ahora</div>
+                <div class="btn-comprar" onclick="abrirCompra('Air Force One Black', 110, true)">Comprar ahora</div>
             </div>
         </div>
 
@@ -75,7 +76,7 @@
             <div class="info">
                 <div class="nombre">Tele New Generation</div>
                 <div class="precio">3500,00 €</div>
-                <div class="btn-comprar" onclick="abrirCompra('Tele New Generation', 3500)">Comprar ahora</div>
+                <div class="btn-comprar" onclick="abrirCompra('Tele New Generation', 3500, false)">Comprar ahora</div>
             </div>
         </div>
 
@@ -84,7 +85,7 @@
             <div class="info">
                 <div class="nombre">Jordan 5 G1 Especial</div>
                 <div class="precio">189,99 €</div>
-                <div class="btn-comprar" onclick="abrirCompra('Jordan 5 G1', 189.99)">Comprar ahora</div>
+                <div class="btn-comprar" onclick="abrirCompra('Jordan 5 G1', 189.99, true)">Comprar ahora</div>
             </div>
         </div>
 
@@ -93,7 +94,7 @@
             <div class="info">
                 <div class="nombre">Jordan "Regueton" Style</div>
                 <div class="precio">210,00 €</div>
-                <div class="btn-comprar" onclick="abrirCompra('Jordan Regueton', 210)">Comprar ahora</div>
+                <div class="btn-comprar" onclick="abrirCompra('Jordan Regueton', 210, true)">Comprar ahora</div>
             </div>
         </div>
 
@@ -102,7 +103,7 @@
             <div class="info">
                 <div class="nombre">Botines Futbol Elegante</div>
                 <div class="precio">84,95 €</div>
-                <div class="btn-comprar" onclick="abrirCompra('Botines Futbol', 84.95)">Comprar ahora</div>
+                <div class="btn-comprar" onclick="abrirCompra('Botines Futbol', 84.95, true)">Comprar ahora</div>
             </div>
         </div>
     </div>
@@ -113,8 +114,10 @@
                 <h2 id="modalNombre" style="margin:0; text-transform: uppercase;">Producto</h2>
                 <p id="modalPrecio" style="font-size: 32px; font-weight: 900; margin: 10px 0;"></p>
                 
-                <p style="font-size: 13px; font-weight: bold; color: #666;">ELIGE TU TALLA (37 - 53):</p>
-                <div id="gridTallas" class="tallas-grid"></div>
+                <div id="bloque-tallas">
+                    <p style="font-size: 13px; font-weight: bold; color: #666;">ELIGE TU TALLA (37 - 53):</p>
+                    <div id="gridTallas" class="tallas-grid"></div>
+                </div>
 
                 <div class="cupon-box">
                     <input type="text" id="inputCupon" class="input-cupon" placeholder="¿CÓDIGO SECRETO?">
@@ -128,11 +131,10 @@
 
             <div id="seccionContacto" class="seccion-final">
                 <h3>¡CASI ES TUYO!</h3>
-                <p style="font-size: 14px; line-height: 1.4;">Para finalizar el pago y el envío, contacta con nosotros ahora:</p>
+                <p style="font-size: 14px;">Para finalizar el pago del pedido, contacta con nosotros:</p>
                 <div class="email-display">notengopapa602@gmail.com</div>
-                <p style="font-size: 12px; font-weight: bold;">Indica tu nombre y el producto elegido.</p>
                 <a href="mailto:notengopapa602@gmail.com" class="btn-comprar" style="background:#111; color:#fff;">ENVIAR EMAIL AHORA</a>
-                <button onclick="cerrarModal()" style="margin-top:20px; border:none; background:none; color:#999; cursor:pointer; font-size: 11px; text-decoration: underline;">Volver a la tienda</button>
+                <button onclick="cerrarModal()" style="margin-top:20px; border:none; background:none; color:#999; cursor:pointer; font-size: 11px;">Cerrar</button>
             </div>
         </div>
     </div>
@@ -151,7 +153,7 @@
             grid.appendChild(div);
         }
 
-        function abrirCompra(nombre, precio) {
+        function abrirCompra(nombre, precio, tieneTalla) {
             precioOriginal = precio;
             document.getElementById('modalNombre').innerText = nombre;
             document.getElementById('modalPrecio').innerText = precio.toFixed(2) + " €";
@@ -160,8 +162,15 @@
             document.getElementById('pantalla-seleccion').style.display = "block";
             document.getElementById('seccionContacto').style.display = "none";
             document.getElementById('avisoGordos').style.display = "none";
-            document.getElementById('btnConf').style.display = "none";
             document.getElementById('inputCupon').value = "";
+            
+            if (tieneTalla) {
+                document.getElementById('bloque-tallas').style.display = "block";
+                document.getElementById('btnConf').style.display = "none";
+            } else {
+                document.getElementById('bloque-tallas').style.display = "none";
+                document.getElementById('btnConf').style.display = "block"; // En la tele sale el botón directo
+            }
         }
 
         function validarCupon() {
@@ -183,3 +192,4 @@
     <footer>HECHOPAGORDOS S.L. © 2026</footer>
 </body>
 </html>
+
