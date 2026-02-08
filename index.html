@@ -3,115 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HechoPaGordos - Streetwear Edition</title>
+    <title>HechoPaGordos - Premium Store</title>
     <style>
-        /* ESTILO GRADIENT FUTURISTA */
-        :root {
-            --bg: #0f0c29;
-            --gradient: linear-gradient(45deg, #7b4397, #dc2430);
-            --accent: #00f2fe;
-            --pink: #ff0080;
+        /* ESTILO DARK LUXURY INSPIRADO EN LA IMAGEN */
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+            margin: 0; 
+            background-color: #000000; /* Fondo negro puro */
+            color: #ffffff; 
         }
 
-        body { 
-            font-family: 'Inter', sans-serif; 
-            margin: 0; 
-            background: #0f0c29; 
-            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
-            color: #fff; 
-            min-height: 100vh;
-        }
-        
+        /* Navegación Minimalista */
         nav { 
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 20px 30px; background: rgba(0,0,0,0.4); backdrop-filter: blur(10px);
-            position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 20px 40px; background: #000; border-bottom: 1px solid #222;
+            position: sticky; top: 0; z-index: 100;
         }
-        .logo { font-weight: 900; font-size: 24px; text-transform: uppercase; letter-spacing: 2px; background: linear-gradient(to right, #00f2fe, #ff0080); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo { font-weight: 900; font-size: 20px; text-transform: uppercase; letter-spacing: 3px; }
+        .nav-links { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
-        .hero { text-align: center; padding: 100px 20px; }
-        .hero h1 { font-size: 55px; font-weight: 900; text-transform: uppercase; margin: 0; background: linear-gradient(to right, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { color: var(--accent); font-weight: bold; letter-spacing: 2px; margin-top: 10px; }
+        /* Banner Principal (Hero) */
+        .hero { 
+            position: relative; height: 60vh; background: #111;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; border-bottom: 1px solid #222;
+        }
+        .hero-content h1 { font-size: 45px; font-weight: 800; text-transform: uppercase; margin: 0; }
+        .hero-content p { font-size: 14px; color: #888; margin-top: 10px; letter-spacing: 2px; }
 
-        .grid-productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 40px 30px; }
+        /* Categorías Circulares (Como en la foto) */
+        .categorias-container { 
+            display: flex; justify-content: center; gap: 20px; padding: 40px 20px;
+            overflow-x: auto;
+        }
+        .cat-circle { 
+            width: 80px; text-align: center; cursor: pointer;
+        }
+        .cat-circle div { 
+            width: 80px; height: 80px; border-radius: 50%; 
+            background: #1a1a1a; margin-bottom: 10px; border: 1px solid #333;
+            transition: 0.3s;
+        }
+        .cat-circle:hover div { border-color: #fff; }
+        .cat-circle span { font-size: 11px; font-weight: bold; color: #888; text-transform: uppercase; }
+
+        /* Grid de Productos Moderno */
+        .seccion-titulo { padding: 20px 40px; font-size: 18px; font-weight: 700; text-transform: uppercase; border-top: 1px solid #222; }
+        .grid-productos { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 2px; background: #222; /* Crea líneas finas entre fotos */
+            padding: 0;
+        }
         
         .producto-card { 
-            background: rgba(255, 255, 255, 0.05); 
-            border-radius: 24px; 
-            padding: 15px; 
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
+            background: #000; padding: 20px; transition: 0.3s;
         }
-        .producto-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(0, 242, 254, 0.2); }
-        
-        .img-container { 
-            background: linear-gradient(135deg, #7b4397 0%, #00f2fe 100%); 
-            border-radius: 20px; 
-            padding: 5px; 
-            margin-bottom: 15px;
+        .img-box { 
+            background: #0a0a0a; margin-bottom: 15px; position: relative;
         }
-        .img-container img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 18px; display: block; }
-        .galeria-doble { display: flex; gap: 5px; }
+        .img-box img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+        .galeria-doble { display: flex; gap: 2px; }
         .galeria-doble img { width: 50%; }
 
-        .info { padding: 10px; text-align: left; }
-        .nombre { font-size: 20px; font-weight: 800; margin-bottom: 5px; }
-        .precio { font-size: 18px; color: var(--accent); font-weight: bold; }
+        .info { padding: 10px 0; }
+        .nombre { font-size: 16px; font-weight: 600; margin-bottom: 5px; }
+        .precio { font-size: 15px; color: #fff; font-weight: 900; }
         
         .btn-comprar { 
-            width: 100%; padding: 15px; margin-top: 15px; border-radius: 15px; 
-            border: none; background: var(--accent); color: #000; 
-            font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.3s;
+            width: 100%; padding: 12px; margin-top: 15px; border: 1px solid #fff;
+            background: transparent; color: #fff; font-weight: 700; 
+            text-transform: uppercase; font-size: 12px; cursor: pointer; transition: 0.3s;
         }
-        .btn-comprar:hover { background: #fff; transform: scale(1.02); }
+        .btn-comprar:hover { background: #fff; color: #000; }
 
-        /* MODAL */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(15, 12, 41, 0.95); align-items: center; justify-content: center; padding: 15px; }
+        /* Modal y Tallas */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; padding: 15px; }
         .modal-content { 
-            background: #1a1a2e; border: 1px solid var(--accent); padding: 30px; 
-            border-radius: 30px; width: 100%; max-width: 450px; text-align: center;
-            max-height: 85vh; overflow-y: auto;
+            background: #000; border: 1px solid #333; padding: 40px; 
+            border-radius: 0px; width: 100%; max-width: 400px; text-align: center;
         }
         
         .tallas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0; }
-        .talla-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); padding: 12px; border-radius: 12px; cursor: pointer; font-weight: bold; }
-        .talla-item.active { background: var(--accent); color: #000; border-color: var(--accent); }
+        .talla-item { border: 1px solid #333; padding: 10px; font-size: 12px; cursor: pointer; }
+        .talla-item.active { background: #fff; color: #000; }
 
-        .cupon-box { background: rgba(255, 0, 128, 0.1); border: 1px dashed var(--pink); border-radius: 20px; padding: 20px; margin: 20px 0; }
-        .input-cupon { width: 80%; padding: 12px; border-radius: 10px; border: none; background: #000; color: #fff; text-align: center; margin-bottom: 10px; }
+        .cupon-box { margin: 25px 0; border: 1px dashed #444; padding: 15px; }
+        .input-cupon { width: 100%; padding: 10px; background: #111; border: 1px solid #333; color: #fff; text-align: center; margin-bottom: 10px; box-sizing: border-box;}
         
         .aviso-gordos { 
-            display: none; background: var(--pink); color: #fff; padding: 15px; 
-            border-radius: 15px; font-weight: 900; text-transform: uppercase;
-            animation: pulse 1s infinite; margin-top: 10px;
+            display: none; background: #ff0000; color: #fff; padding: 10px; 
+            font-weight: 900; font-size: 12px; text-transform: uppercase; margin-top: 10px;
         }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
 
-        .contacto-final { display: none; margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 20px; }
-        footer { text-align: center; padding: 40px; color: #555; font-weight: bold; }
+        footer { text-align: center; padding: 60px; color: #444; font-size: 10px; letter-spacing: 2px; }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">HechoPaGordos</div>
-        <div style="font-size: 12px; letter-spacing: 2px;">DROP 2026</div>
+        <div class="nav-links">SHOP | NEW | ABOUT</div>
     </nav>
 
     <section class="hero">
-        <h1>STREETWEAR<br>GRADIENT</h1>
-        <p>CONOZCO A BRIAN - NO SOY GORDO</p>
+        <div class="hero-content">
+            <h1>STREETWEAR<br>ARCHIVE</h1>
+            <p>LIMITED DROPS ONLY</p>
+        </div>
     </section>
+
+    <div class="categorias-container">
+        <div class="cat-circle"><div></div><span>Jordan</span></div>
+        <div class="cat-circle"><div></div><span>Nike</span></div>
+        <div class="cat-circle"><div></div><span>Fútbol</span></div>
+        <div class="cat-circle"><div></div><span>Ofertas</span></div>
+    </div>
+
+    <div class="seccion-titulo">Recién llegados</div>
 
     <div class="grid-productos">
         <div class="producto-card">
-            <div class="img-container">
-                <div class="galeria-doble">
-                    <img src="Air_Force_one_negras.jpg" alt="1">
-                    <img src="Air-Force-one-Negras.jpg" alt="2">
-                </div>
+            <div class="img-box galeria-doble">
+                <img src="Air_Force_one_negras.jpg" alt="1">
+                <img src="Air-Force-one-Negras.jpg" alt="2">
             </div>
             <div class="info">
                 <div class="nombre">Air Force One "Black"</div>
@@ -121,8 +135,8 @@
         </div>
 
         <div class="producto-card">
-            <div class="img-container">
-                <img src="Jordan-5-G1.jpg" alt="Jordan 5">
+            <div class="img-box">
+                <img src="Jordan-5-G1.jpg" alt="J5">
             </div>
             <div class="info">
                 <div class="nombre">Jordan 5 G1 Especial</div>
@@ -130,10 +144,10 @@
                 <button class="btn-comprar" onclick="abrirCompra('Jordan 5 G1', 189.99)">Comprar</button>
             </div>
         </div>
-
+        
         <div class="producto-card">
-            <div class="img-container">
-                <img src="Jordan-Regueton.jpg" alt="Jordan Regueton">
+            <div class="img-box">
+                <img src="Jordan-Regueton.jpg" alt="JR">
             </div>
             <div class="info">
                 <div class="nombre">Jordan "Regueton" Style</div>
@@ -143,8 +157,8 @@
         </div>
 
         <div class="producto-card">
-            <div class="img-container">
-                <img src="Botines_Futbol_Elegante.jpg" alt="Botines">
+            <div class="img-box">
+                <img src="Botines_Futbol_Elegante.jpg" alt="Futbol">
             </div>
             <div class="info">
                 <div class="nombre">Botines Futbol Elegante</div>
@@ -156,28 +170,27 @@
 
     <div id="modalCompra" class="modal">
         <div class="modal-content">
-            <h2 id="modalNombre" style="margin-top:0;">Producto</h2>
-            <p id="modalPrecio" style="font-size: 30px; font-weight: 900; color: var(--accent);"></p>
+            <h2 id="modalNombre" style="margin:0; font-size: 18px;">PRODUCTO</h2>
+            <p id="modalPrecio" style="font-size: 24px; font-weight: 900;"></p>
             
             <div id="pasoTallas">
-                <p style="color: #888;">Talla EUR (37-53):</p>
+                <p style="font-size: 11px; color: #666;">SELECCIONA TALLA (37-53):</p>
                 <div id="gridTallas" class="tallas-grid"></div>
 
                 <div class="cupon-box">
-                    <p style="margin-bottom:10px; font-weight:bold;">¿CÓDIGO SECRETO?</p>
-                    <input type="text" id="inputCupon" class="input-cupon" placeholder="Escribe aquí...">
-                    <button id="btnAplicar" class="btn-comprar" style="background:#fff; color:#000; padding:10px;" onclick="validarCupon()">Aplicar</button>
-                    <div id="avisoGordos" class="aviso-gordos">¡NO PERMITIMOS GORDOS! <br> 60% ACTIVADO</div>
+                    <input type="text" id="inputCupon" class="input-cupon" placeholder="CÓDIGO SECRETO">
+                    <button id="btnAplicar" class="btn-comprar" onclick="validarCupon()">Canjear</button>
+                    <div id="avisoGordos" class="aviso-gordos">¡NO PERMITIMOS GORDOS!</div>
                 </div>
 
-                <button id="btnConfirmar" class="btn-comprar" style="display:none;" onclick="irAContacto()">Confirmar</button>
+                <button id="btnConfirmar" class="btn-comprar" style="display:none; background:#fff; color:#000;" onclick="irAContacto()">Confirmar</button>
             </div>
 
-            <div id="seccionContacto" class="contacto-final">
-                <p>Envía un email para finalizar:</p>
-                <div style="font-weight:900; color: var(--accent); margin: 20px 0;">notengopapa602@gmail.com</div>
-                <a href="mailto:notengopapa602@gmail.com" class="btn-comprar" style="text-decoration:none; display:block;">Enviar ahora</a>
-                <button onclick="cerrarModal()" style="background:none; border:none; color:#555; margin-top:15px; cursor:pointer;">Cerrar</button>
+            <div id="seccionContacto" style="display:none;">
+                <p style="font-size: 12px;">CONTACTO PARA PAGO:</p>
+                <div style="padding:15px; background:#111; margin: 15px 0;">notengopapa602@gmail.com</div>
+                <a href="mailto:notengopapa602@gmail.com" class="btn-comprar" style="text-decoration:none; display:block;">Enviar email</a>
+                <button onclick="cerrarModal()" style="background:none; border:none; color:#444; margin-top:20px; cursor:pointer; font-size:10px;">CERRAR</button>
             </div>
         </div>
     </div>
@@ -225,6 +238,6 @@
         function cerrarModal() { document.getElementById('modalCompra').style.display = "none"; }
     </script>
 
-    <footer>HECHOPAGORDOS S.L. © 2026</footer>
+    <footer>HECHOPAGORDOS ARCHIVE © 2026</footer>
 </body>
 </html>
