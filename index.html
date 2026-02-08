@@ -49,7 +49,7 @@
         .btn { width: 100%; padding: 20px; background: var(--negro); color: #fff; border: none; font-size: 14px; font-weight: 900; text-transform: uppercase; cursor: pointer; border-radius: 10px; letter-spacing: 1px; }
         .btn:hover { background: var(--rojo); transform: scale(1.02); }
 
-        /* MODAL CURRADÍSIMO */
+        /* MODAL */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(15px); align-items: center; justify-content: center; }
         .modal-content { background: #fff; padding: 50px; border-radius: 24px; max-width: 500px; width: 90%; text-align: center; position: relative; color: #000; }
         .contact-box { background: #f0f0f0; padding: 20px; border-radius: 12px; margin: 25px 0; font-family: monospace; font-size: 18px; font-weight: bold; color: var(--rojo); border: 1px solid #ddd; }
@@ -58,7 +58,7 @@
         .coupon-area { margin: 80px 0; padding: 60px; background: var(--gris); border: 3px dashed #000; text-align: center; border-radius: 20px; }
         .reviews { background: #fff; padding: 80px 20px; text-align: center; border-top: 1px solid #eee; }
         .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1100px; margin: 50px auto; }
-        .review-item { padding: 30px; border-radius: 15px; background: var(--gris); font-style: italic; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .review-item { padding: 30px; border-radius: 15px; background: var(--gris); font-style: italic; box-shadow: 0 10px 20px rgba(0,0,0,0.05); color: #333; }
 
         .meme-area { background: var(--negro); color: #fff; padding: 100px 20px; text-align: center; }
         #meme-img { max-width: 100%; max-height: 500px; margin-top: 40px; display: none; border: 10px solid #fff; border-radius: 5px; }
@@ -112,8 +112,8 @@
                 <div class="info">
                     <div style="font-size: 60px; margin-bottom: 20px; filter: blur(4px);">❓</div>
                     <h3 style="color: var(--oro);">ARCHIVO SECRETO</h3>
-                    <p>Solo para clientes VIP confirmados por Brian.</p>
-                    <button class="btn" style="background: var(--oro);" onclick="alert('Contacta por correo para desbloquear el archivo secreto.')">DESBLOQUEAR</button>
+                    <p>Contenido clasificado por Brian.</p>
+                    <button class="btn" style="background: var(--oro);" onclick="alert('Contacta por correo para desbloquear el secreto de Brian.')">DESBLOQUEAR</button>
                 </div>
             </div>
 
@@ -159,20 +159,23 @@
         </div>
 
         <div class="coupon-area">
-            <h2>🎫 ¿ERES VIP?</h2>
-            <p>Si conoces a Brian, tienes beneficios exclusivos.</p>
-            <input type="text" id="cup-in" style="padding:15px; width:300px; border:2px solid #000; text-align:center; font-weight:bold; margin-bottom:15px;" placeholder="CÓDIGO VIP">
-            <br><button onclick="validaCupon()" class="btn" style="max-width:250px;">APLICAR 60% DTO</button>
+            <h2>🎫 ¿TIENES UN CÓDIGO?</h2>
+            <p>Si conoces a Brian, mete tu código VIP aquí abajo.</p>
+            <input type="text" id="cup-in" style="padding:15px; width:300px; border:2px solid #000; text-align:center; font-weight:bold; margin-bottom:15px;" placeholder="CÓDIGO">
+            <br><button onclick="validaCupon()" class="btn" style="max-width:250px;">APLICAR DESCUENTO</button>
             <p id="cup-msg" style="margin-top:20px; font-weight:bold;"></p>
         </div>
     </div>
 
     <section class="reviews">
-        <h2>TESTIMONIOS DE LOS GORDOS</h2>
+        <h2>RESEÑAS DE LA PAGINA</h2>
         <div class="review-grid">
-            <div class="review-item">"Las zapas me llegaron flama. Brian me trató como a un rey." - <b>Cliente de Madrid</b></div>
-            <div class="review-item">"La tele de 100 es una locura, ya no voy al cine." - <b>Gordo de Valencia</b></div>
-            <div class="review-item">"El cupón de Brian me salvó el mes. Recomendado." - <b>Anónimo</b></div>
+            <div class="review-item">"Las zapas me llegaron flama. Brian me trató como a un rey y me regaló un clip de Peppa Pig. 10/10." - <b>El Primo de Madrid</b></div>
+            <div class="review-item">"La tele de 100 es tan grande que ahora vivo dentro de la caja. El mejor Bizum de mi vida." - <b>Gordo de Valencia</b></div>
+            <div class="review-item">"Pedí las Jordan y automáticamente me creció la barba y me subió el carisma. Gracias Brian." - <b>Anónimo Legendario</b></div>
+            <div class="review-item">"Mi mujer me dejó, pero al menos tengo las AF1 Negras. Brian es mi nuevo padre." - <b>Paco Billetes</b></div>
+            <div class="review-item">"El envío tardó 3 días, pero valió la pena solo por ver el remitente. HechoPaGordos manda." - <b>Inversor de Criptos</b></div>
+            <div class="review-item">"Compré la Thompson de Peppa para mi gato. Ahora es el jefe del barrio." - <b>Señora de Cuenca</b></div>
         </div>
     </section>
 
@@ -187,10 +190,9 @@
         <div class="modal-content">
             <h2 id="m-prod"></h2>
             <p id="m-talla" style="font-weight:bold; color:var(--rojo);"></p>
-            <p>Para gestionar el pago y el envío certificado, contacta aquí:</p>
+            <p>Para gestionar el pago por Bizum y el envío certificado, contacta aquí:</p>
             <div class="contact-box">notengopapa602@gmail.com</div>
             <button class="btn" id="finalBtn">CONTACTAR POR CORREO</button>
-            <button class="btn" onclick="cerrarModal()" style="background:#eee; color:#000; margin-top:10px;">VOLVER AL ARCHIVO</button>
         </div>
     </div>
 
@@ -227,16 +229,23 @@
             
             document.getElementById('finalBtn').onclick = function() {
                 const precio = document.querySelector(`[alt*='${p.substring(0,3)}']`)?.closest('.card').querySelector('.curr-p').innerText || "Consultar";
-                const body = encodeURIComponent(`Hola Brian,\n\nSolicito el pedido de:\nItem: ${p}\n${talla}\nPrecio mostrado: ${precio}\n\nEspero instrucciones para el Bizum.\n\nSaludos.`);
+                const body = encodeURIComponent(`Hola Brian,\n\nSolicito el pedido de:\nItem: ${p}\n${talla}\nPrecio: ${precio}\n\nEspero instrucciones para el Bizum.\n\nSaludos.`);
                 window.location.href = `mailto:notengopapa602@gmail.com?subject=PEDIDO: ${p.toUpperCase()}&body=${body}`;
             };
         }
-        function cerrarModal() { document.getElementById('contactModal').style.display = 'none'; }
+        
+        // Cerrar modal al hacer click fuera
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('contactModal')) {
+                document.getElementById('contactModal').style.display = "none";
+            }
+        }
 
-        // Cupon 60%
+        // Cupon Lógica
         function validaCupon() {
-            if(document.getElementById('cup-in').value.trim() === 'ConozcoaBrianNosoyGordo') {
-                document.getElementById('cup-msg').innerHTML = "✅ BRIAN CONFIRMADO. PRECIOS ACTUALIZADOS.";
+            const code = document.getElementById('cup-in').value.trim();
+            if(code === 'ConozcoaBrianNosoyGordo') {
+                document.getElementById('cup-msg').innerHTML = "✅ CÓDIGO BRIAN ACEPTADO.";
                 document.getElementById('cup-msg').style.color = "green";
                 document.querySelectorAll('.curr-p').forEach((p, i) => {
                     const base = parseFloat(p.getAttribute('data-base'));
@@ -245,7 +254,7 @@
                     document.querySelectorAll('.old-price')[i].style.display = "inline-block";
                 });
             } else {
-                document.getElementById('cup-msg').innerHTML = "❌ CÓDIGO INVÁLIDO.";
+                document.getElementById('cup-msg').innerHTML = "❌ CÓDIGO NO VÁLIDO O CADUCADO.";
                 document.getElementById('cup-msg').style.color = "red";
             }
         }
