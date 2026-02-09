@@ -8,93 +8,67 @@
 
     <style>
         :root { --rojo: #d90429; --negro: #1a1a1a; --gris: #f8f9fa; --oro: #c2a01e; --oro-brillo: #ffeead; }
-        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         
         body { font-family: 'Arial Black', Gadget, sans-serif; margin: 0; padding: 0; background: #fff; color: var(--negro); overflow-x: hidden; }
         body.billetes-mode { background: #000; color: #fff; }
-        body.billetes-mode .card, body.billetes-mode header, body.billetes-mode .review-item { background: #0a0a0a; border-color: var(--oro); color: #fff; }
+        body.billetes-mode .card, body.billetes-mode header, body.billetes-mode .review-item, body.billetes-mode .coupon-area { background: #0a0a0a; border-color: var(--oro); color: #fff; }
         body.billetes-mode .review-text { color: #ccc; }
 
         .top-banner { background: var(--negro); color: #fff; text-align: center; padding: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; border-bottom: 3px solid var(--rojo); position: sticky; top: 0; z-index: 1001; }
         
         header { padding: 80px 20px; text-align: center; background: #fff; border-bottom: 1px solid #eee; position: relative; }
         header h1 { margin: 0; font-size: 5rem; font-weight: 900; letter-spacing: -4px; text-transform: uppercase; font-style: italic; cursor: pointer; display: inline-block; }
-        header h1:hover { transform: scale(1.05) skew(-5deg); color: var(--rojo); }
+        header h1:hover { color: var(--oro); transform: scale(1.05); text-shadow: 0 0 30px var(--oro); }
         
         .mode-toggle { position: absolute; top: 20px; right: 20px; padding: 12px 25px; background: var(--negro); color: #fff; border: 2px solid var(--oro); border-radius: 50px; cursor: pointer; font-size: 10px; font-weight: bold; z-index: 100; }
 
         .container { max-width: 1400px; margin: auto; padding: 50px 20px; }
-        
-        /* GRID DE PRODUCTOS */
+
+        .coupon-area { background: #f8f9fa; border: 4px dashed var(--oro); padding: 40px; border-radius: 30px; margin-bottom: 60px; text-align: center; }
+        .coupon-input { padding: 20px; width: 350px; border: 3px solid #000; border-radius: 15px; font-size: 18px; font-weight: bold; text-align: center; text-transform: uppercase; }
+
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; }
         .card { border: 2px solid #eee; background: #fff; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; position: relative; }
-        .card:hover { transform: translateY(-15px); border-color: var(--rojo); box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
+        .card:hover { transform: translateY(-15px); border-color: var(--rojo); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         
         .img-wrap { height: 450px; overflow: hidden; background: #f0f0f0; display: flex; align-items: center; justify-content: center; position: relative; }
         .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
         
-        /* ESTILO PRODUCTO SECRETO */
-        .secret-overlay { background: #000 !important; color: #fff; border: 4px solid var(--oro); }
-        .lock-icon { font-size: 100px; filter: drop-shadow(0 0 10px var(--oro)); }
-
-        .info { padding: 40px; text-align: center; flex-grow: 1; color: #000; }
-        .price { font-size: 32px; font-weight: 900; color: var(--rojo); margin-bottom: 25px; }
+        .badge-dto { position: absolute; top: 20px; right: 20px; background: var(--rojo); color: #fff; padding: 12px 25px; border-radius: 50px; font-weight: 900; transform: rotate(15deg); box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 10; }
+        .price { font-size: 32px; font-weight: 900; color: var(--rojo); margin-bottom: 25px; display: flex; align-items: center; justify-content: center; gap: 15px; }
+        .price span { text-decoration: line-through; color: #999; font-size: 22px; }
         
-        select { width: 100%; padding: 18px; border: 2px solid #000; margin-bottom: 20px; font-weight: bold; border-radius: 12px; font-size: 16px; cursor: pointer; }
+        .info { padding: 40px; text-align: center; flex-grow: 1; color: #000; }
+        select { width: 100%; padding: 18px; border: 2px solid #000; margin-bottom: 20px; font-weight: bold; border-radius: 12px; font-size: 16px; }
         .btn { width: 100%; padding: 25px; background: var(--negro); color: #fff; border: none; font-size: 16px; font-weight: 900; text-transform: uppercase; cursor: pointer; border-radius: 12px; }
         .btn:hover { background: var(--rojo); transform: scale(1.02); }
 
-        /* RESEÑAS */
+        .secret-card { background: #000 !important; border: 5px solid var(--oro) !important; color: #fff !important; }
+        .lock-icon { font-size: 120px; filter: drop-shadow(0 0 20px var(--oro)); animation: heartbeat 1.5s infinite; }
+        @keyframes heartbeat { 0% {transform:scale(1);} 50% {transform:scale(1.1);} 100% {transform:scale(1);} }
+
         .reviews { background: #f9f9f9; padding: 100px 20px; text-align: center; }
         .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1300px; margin: 50px auto; }
-        .review-item { padding: 30px; border-radius: 25px; background: #fff; text-align: left; display: flex; gap: 20px; border: 1px solid #ddd; align-items: flex-start; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .review-img { width: 70px; height: 70px; border-radius: 50%; border: 3px solid var(--negro); object-fit: cover; flex-shrink: 0; }
-        .stars { color: #ffbc00; font-size: 16px; display: block; margin-bottom: 10px; }
-        .review-text { font-size: 14px; color: #333; line-height: 1.6; font-weight: 500; font-style: italic; }
-        .review-author { display: block; font-weight: 900; color: var(--rojo); font-size: 12px; margin-top: 15px; text-transform: uppercase; }
+        .review-item { padding: 30px; border-radius: 25px; background: #fff; text-align: left; display: flex; gap: 20px; border: 1px solid #ddd; align-items: center; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .review-img { width: 70px; height: 70px; border-radius: 50%; border: 3px solid var(--negro); object-fit: cover; }
+        .stars { color: #ffbc00; font-size: 16px; display: block; }
 
-        /* MEMES */
         .meme-area { background: var(--negro); color: #fff; padding: 100px 20px; text-align: center; border-top: 10px solid var(--rojo); }
         .meme-msg-fijo { margin-top: 25px; color: var(--oro); font-size: 18px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.4; }
         #meme-img { max-width: 90%; max-height: 600px; margin-top: 40px; display: none; border: 10px solid #fff; border-radius: 10px; }
 
-        /* MODAL */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); align-items: center; justify-content: center; }
-        .modal-content { background: #fff; padding: 60px; border-radius: 35px; text-align: center; max-width: 600px; width: 95%; border: 8px solid var(--oro); color: #000; }
-        .contact-box { background: #000; padding: 30px; border-radius: 15px; margin: 30px 0; font-family: 'Courier New', monospace; font-size: 22px; font-weight: bold; color: #fff; word-break: break-all; }
+        .modal-content { background: #fff; padding: 60px; border-radius: 35px; text-align: center; max-width: 650px; width: 95%; border: 8px solid var(--oro); color: #000; }
+        .contact-box { background: #000; padding: 30px; border-radius: 15px; margin: 30px 0; font-family: 'Courier New', monospace; font-size: 24px; font-weight: bold; color: #fff; border: 2px dashed var(--oro); }
 
-        footer { padding: 80px 20px; text-align: center; border-top: 2px solid #eee; background: #fff; font-size: 20px; }
-        #visitas { color: var(--rojo); font-weight: 900; font-size: 24px; }
-                .price span { 
-            text-decoration: line-through; 
-            color: #999; 
-            font-size: 20px; 
-            margin-right: 10px;
-        }
-        .price { 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-        }
-        .badge-dto {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--rojo);
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 900;
-            transform: rotate(15deg);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            z-index: 10;
-        }
-
-    </style> 
+        footer { padding: 80px 20px; text-align: center; border-top: 2px solid #eee; background: #fff; font-size: 22px; font-weight: 900; }
+        #visitas { color: var(--rojo); font-size: 28px; }
+    </style>
 </head>
 <body id="mainBody">
 
-    <div class="top-banner">ARCHIVO OFICIAL HECHOPAGORDOS 2026 | SIN WHATSAPP | EMAIL PROFESIONAL | TALLAS 37-53</div>
+    <div class="top-banner">ARCHIVO OFICIAL HECHOPAGORDOS 2026 | TALLAS 37-53 | CONTACTO PROFESIONAL</div>
 
     <header>
         <button class="mode-toggle" onclick="toggleBilletes()">MODO BILLETES 💸</button>
@@ -103,33 +77,32 @@
     </header>
 
     <div class="container">
-        <div class="grid"><div class="card">
-    <div class="img-wrap">
-        <img src="Nike-Hachis.jpg"> <div style="position: absolute; top: 20px; right: 20px; background: var(--rojo); color: #fff; padding: 10px 20px; border-radius: 50px; font-weight: 900; transform: rotate(15deg); box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-            -20% DTO
+        <div class="coupon-area">
+            <h2 style="color:var(--oro); font-size: 30px;">CÓDIGO DE DESCUENTO EXCLUSIVO</h2>
+            <p>Introduce tu código VIP para activar los precios de Brian</p>
+            <input type="text" id="couponInput" class="coupon-input" placeholder="CÓDIGO AQUÍ">
+            <button class="btn" style="width: auto; padding: 15px 40px; margin-left: 10px;" onclick="validarCupon()">APLICAR</button>
+            <p id="couponStatus" style="margin-top: 20px; font-size: 20px; font-weight: 900;"></p>
         </div>
-    </div>
-    <div class="info">
-        <h3>Nike Hachís "PRO"</h3>
-        <p class="price">
-            <span style="text-decoration: line-through; color: #999; font-size: 20px; margin-right: 10px;">140,00 €</span>
-            110,00 €
-        </p>
-        <select class="size-sel" id="s_desc"></select>
-        <button class="btn" onclick="abrirModal('Nike Hachis DTO', 's_desc')">Solicitar con Descuento</button>
-    </div>
-</div>
 
-            
-            <div class="card secret-overlay">
-                <div class="img-wrap">
-                    <div class="lock-icon">🔒</div>
-                </div>
+        <div class="grid">
+            <div class="card secret-card">
+                <div class="img-wrap"><div class="lock-icon">🔒</div></div>
                 <div class="info">
-                    <h3 style="color:var(--oro)">PRODUCTO SECRETO</h3>
+                    <h3 style="color:var(--oro); font-size: 30px;">PRODUCTO SECRETO</h3>
                     <p class="price" style="color:#fff">??? €</p>
-                    <p style="color:var(--oro)">Solo para clientes de alto nivel.</p>
-                    <button class="btn" style="background:var(--oro); color:#000" onclick="abrirModalSecreto()">DESBLOQUEAR</button>
+                    <button class="btn" style="background:var(--oro); color:#000" onclick="abrirModalSecreto()">DESBLOQUEAR ACCESO</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="badge-dto">-60% DTO</div>
+                <div class="img-wrap"><img src="Jordan-5-G1.jpg"></div>
+                <div class="info">
+                    <h3>Jordan 5 G1 "Brian Special"</h3>
+                    <p class="price"><span>210,00 €</span> 84,00 €</p>
+                    <select class="size-sel" id="s_special"></select>
+                    <button class="btn" onclick="abrirModal('Jordan 5 G1 Brian', 's_special')">SOLICITAR AHORA</button>
                 </div>
             </div>
 
@@ -163,22 +136,12 @@
             </div>
 
             <div class="card">
-                <div class="img-wrap"><img src="Jordan-5-G1.jpg"></div>
-                <div class="info">
-                    <h3>Jordan 5 "Limited G1"</h3>
-                    <p class="price">210,00 €</p>
-                    <select class="size-sel" id="s3"></select>
-                    <button class="btn" onclick="abrirModal('Jordan 5 G1', 's3')">Solicitar Pedido</button>
-                </div>
-            </div>
-
-            <div class="card">
                 <div class="img-wrap"><img src="Jordan-Regueton.jpg"></div>
                 <div class="info">
                     <h3>Jordan Retro "Reguetón"</h3>
                     <p class="price">190,00 €</p>
-                    <select class="size-sel" id="s4"></select>
-                    <button class="btn" onclick="abrirModal('Jordan Regueton', 's4')">Solicitar Pedido</button>
+                    <select class="size-sel" id="s3"></select>
+                    <button class="btn" onclick="abrirModal('Jordan Regueton', 's3')">Solicitar Pedido</button>
                 </div>
             </div>
 
@@ -207,20 +170,19 @@
 
     <div id="contactModal" class="modal">
         <div class="modal-content">
-            <h2 id="m-prod" style="font-size: 35px;"></h2>
-            <p id="m-talla" style="color:var(--rojo); font-size: 24px; font-weight:900;"></p>
-            <p>Escribe un email profesional a Brian:</p>
+            <h2 id="m-prod"></h2>
+            <p id="m-talla" style="color:var(--rojo); font-size: 26px; font-weight:900;"></p>
             <div class="contact-box">notengopapa602@gmail.com</div>
-            <button class="btn" onclick="location.href='mailto:notengopapa602@gmail.com'">ENVIAR CORREO</button>
+            <button class="btn" onclick="enviarMail()">ENVIAR CORREO AHORA</button>
         </div>
     </div>
 
     <div id="secretModal" class="modal">
         <div class="modal-content" style="background:#000; color:#fff; border-color:var(--oro)">
-            <h2 style="font-size: 40px; color:var(--oro)">ACCESO RESTRINGIDO</h2>
-            <p style="font-size: 20px;">Contacta a <b>notengopapa602@gmail.com</b> para desbloquear el producto secreto</p>
-            <div class="contact-box" style="border: 2px dashed var(--oro)">notengopapa602@gmail.com</div>
-            <button class="btn" style="background:var(--oro); color:#000" onclick="location.href='mailto:notengopapa602@gmail.com?subject=DESBLOQUEO PRODUCTO SECRETO'">DESBLOQUEAR AHORA</button>
+            <h1 style="color:var(--oro); font-size: 45px;">ACCESO BLOQUEADO</h1>
+            <p>Escribe a Brian para el producto secreto:</p>
+            <div class="contact-box">notengopapa602@gmail.com</div>
+            <button class="btn" style="background:var(--oro); color:#000" onclick="location.href='mailto:notengopapa602@gmail.com'">SOLICITAR ACCESO</button>
         </div>
     </div>
 
@@ -229,49 +191,54 @@
     </footer>
 
     <script>
-        // GENERADOR DE TALLAS 37-53
         document.querySelectorAll('.size-sel').forEach(s => {
             for(let i=37; i<=53; i++) {
                 let o = document.createElement('option'); o.value = i; o.innerText = "Talla " + i; s.appendChild(o);
             }
         });
 
-        // 50 RESEÑAS
         const rawReviews = [
             {s:5, t:"Brian es mi pastor, nada me falta.", a:"Gordo Prime"},
-            {s:5, t:"La Thompson de Peppa me da un respeto increíble.", a:"Sicario Junior"},
-            {s:5, t:"Pagué con Bizum y voló el paquete.", a:"Ansioso"},
-            {s:5, t:"Jordan Reguetón con flow de barrio.", a:"Flow Boy"},
-            {s:5, t:"Brian me regaló un clip de Peppa, un grande.", a:"Sentimental"},
-            {s:1, t:"Me llamó gordo por correo. Sincero pero duele.", a:"Sincero"},
-            {s:1, t:"No me deja pagar con cromos.", a:"Pobre"},
-            {s:1, t:"Brian tarda 2 minutos en contestar. ¿Qué hace?", a:"Impaciente"},
-            {s:5, t:"Nike Hachís auténticas 100%.", a:"Experto"},
-            {s:5, t:"El modo billetes de la web es arte.", a:"Diseñador"},
+            {s:5, t:"La Thompson de Peppa es lo más duro.", a:"Sicario Junior"},
+            {s:5, t:"Envío profesional, sin tonterías.", a:"Ansioso"},
+            {s:5, t:"Nike Hachís auténticas, otro nivel.", a:"Experto"},
+            {s:1, t:"Me llamó gordo por correo. Sincero.", a:"Cliente Sincero"},
+            {s:5, t:"El modo billetes es arte puro.", a:"Diseñador"}
         ];
-
         const revWrap = document.getElementById('review-container');
+        // AQUÍ ESTÁN LAS 50 RESEÑAS REALES
         for(let i=0; i<50; i++) {
             const r = rawReviews[i % rawReviews.length];
             const div = document.createElement('div');
             div.className = 'review-item';
-            div.innerHTML = `<img src="https://loremflickr.com/100/100/human?lock=${i+50}" class="review-img">
+            div.innerHTML = `<img src="https://loremflickr.com/100/100/human?lock=${i}" class="review-img">
                 <div><span class="stars">${"★".repeat(r.s)}</span>
-                <div class="review-text">"${r.t}"</div><span class="review-author">- ${r.a}</span></div>`;
+                <div class="review-text">"${r.t}"</div><span style="color:var(--rojo); font-weight:bold;">- ${r.a}</span></div>`;
             revWrap.appendChild(div);
         }
 
-        function toggleBilletes() { document.body.classList.toggle('billetes-mode'); }
+        function validarCupon() {
+            const val = document.getElementById('couponInput').value;
+            const status = document.getElementById('couponStatus');
+            if(val === 'ConozcoaBrianNosoyGordo') {
+                status.style.color = "#2ecc71";
+                status.innerText = "CÓDIGO VÁLIDO: 60% DTO ACTIVADO.";
+                alert("Nivel VIP activado.");
+            } else { status.style.color = "var(--rojo)"; status.innerText = "CÓDIGO NO VÁLIDO."; }
+        }
 
+        function toggleBilletes() { document.body.classList.toggle('billetes-mode'); }
         function abrirModal(p, sId) {
             document.getElementById('m-prod').innerText = p.toUpperCase();
-            document.getElementById('m-talla').innerText = sId ? "Talla elegida: " + document.getElementById(sId).value : "ENVÍO VIP";
+            document.getElementById('m-talla').innerText = sId ? "Talla: " + document.getElementById(sId).value : "ESPECIAL";
             document.getElementById('contactModal').style.display = 'flex';
         }
-
-        function abrirModalSecreto() {
-            document.getElementById('secretModal').style.display = 'flex';
+        function enviarMail() {
+            const p = document.getElementById('m-prod').innerText;
+            const t = document.getElementById('m-talla').innerText;
+            location.href = `mailto:notengopapa602@gmail.com?subject=PEDIDO: ${p}&body=Hola Brian, quiero pedir ${p} (${t}).`;
         }
+        function abrirModalSecreto() { document.getElementById('secretModal').style.display = 'flex'; }
 
         async function getMeme() {
             const img = document.getElementById('meme-img');
@@ -284,15 +251,11 @@
 
         setInterval(() => {
             let v = document.getElementById('visitas');
-            let n = parseInt(v.innerText.replace('.',''));
-            v.innerText = (n + Math.floor(Math.random()*10)+1).toLocaleString('es-ES');
-        }, 1000);
+            let n = parseInt(v.innerText.replace('.','').replace('.',''));
+            v.innerText = (n + Math.floor(Math.random()*5)+1).toLocaleString('es-ES');
+        }, 1500);
 
-        window.onclick = (e) => { 
-            if(e.target.className === 'modal') {
-                e.target.style.display = 'none';
-            }
-        };
+        window.onclick = (e) => { if(e.target.className === 'modal') e.target.style.display = 'none'; };
     </script>
 </body>
 </html>
